@@ -1,0 +1,10 @@
+﻿# Tick & Tie: files Git must never track
+venv/
+.env
+data/
+__pycache__/
+.pytest_cache/
+*.duckdb
+*.sqlite
+node_modules/
+.next/
