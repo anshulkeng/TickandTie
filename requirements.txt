@@ -1,0 +1,26 @@
+﻿# SEC data
+edgartools>=5.30
+httpx
+
+# agents + local LLM
+langgraph>=1.0
+ollama
+
+# retrieval
+chromadb
+sentence-transformers
+rank-bm25
+
+# facts store + data
+duckdb
+pandas
+numpy
+
+# API
+fastapi
+uvicorn[standard]
+pydantic>=2
+python-dotenv
+
+# tests
+pytest
