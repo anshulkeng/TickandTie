@@ -36,7 +36,7 @@ There is no tenancy. Everyone sees the same read-only corpus.
 - **Availability**: best effort. This is a portfolio project, not a paid service.
 
 ## Capacity, year one
-- **Data**: 12 companies, 36 annual reports, 128,966 XBRL values, a few thousand text chunks. Fits on one laptop.
+- **Data**: 12 companies, 36 annual reports, 128,966 XBRL values, about 15,000 text chunks. Fits on one laptop.
 - **Traffic**: low, a handful of visitors a day.
 - **Bottleneck**: the language model. qwen2.5:7b on a 4 GB GTX 1650 answers one question at a time and takes seconds to tens of seconds (to be measured). Questions therefore queue (submit, then poll), and rate limiting protects the model.
 
