@@ -22,6 +22,13 @@ COMPANIES = ["AAPL", "MSFT", "NVDA", "WMT", "COST", "JPM",
              "JNJ", "PFE", "XOM", "CAT", "KO", "VZ"]
 YEARS_PER_COMPANY = 3
 
+# Everyday names, used in search headers so "Apple" in a question matches Apple's chunks.
+COMPANY_NAMES = {
+    "AAPL": "Apple", "MSFT": "Microsoft", "NVDA": "NVIDIA", "WMT": "Walmart",
+    "COST": "Costco", "JPM": "JPMorgan Chase", "JNJ": "Johnson & Johnson", "PFE": "Pfizer",
+    "XOM": "ExxonMobil", "CAT": "Caterpillar", "KO": "Coca-Cola", "VZ": "Verizon",
+}
+
 # A ticker can outlive the legal entity behind it. On 1 July 2026 ExxonMobil
 # moved under a new Texas parent with a new CIK; its earlier 10-Ks stay under
 # the old one, so both are searched.
