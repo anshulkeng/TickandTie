@@ -51,7 +51,8 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 
 ## Progress
 - Done: Task 1 (environment), Task 2 (ingestion).
-- Now: playbook Part 0 and layers 1, 2 and 7. Then Task 3 (indexing and retrieval).
+- Playbook done so far: Part 0, layers 1, 2, 7 and 8 (memory files, design and architecture docs, decision records, CI with branch protection, testing strategy).
+- Next: Task 3 (indexing and retrieval).
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.
