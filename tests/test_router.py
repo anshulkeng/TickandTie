@@ -51,3 +51,23 @@ def test_model_failure_falls_back_to_default_sections_and_is_noted():
     plan = route("What risks does Pfizer describe?", decide=broken)
     assert plan.needs_text and plan.sections == ["Item 1", "Item 1A", "Item 7"]
     assert "failed" in plan.notes[0]
+
+def never(question):
+    raise AssertionError("the model should not have been called")
+
+
+def test_investment_advice_is_refused_before_any_model_call():
+    for question in ["Should I buy NVIDIA stock?",
+                     "Is Apple a good investment?",
+                     "Is it worth buying Coca-Cola shares?",
+                     "Buy or sell Exxon?",
+                     "What is the price target for Microsoft?"]:
+        plan = route(question, decide=never)
+        assert plan.refusal and "investment advice" in plan.refusal, question
+
+
+def test_questions_about_a_company_investing_are_not_mistaken_for_advice():
+    plan = route("How much did Apple invest in research and development in fiscal 2025?", decide=says(False, []))
+    assert plan.refusal is None and plan.metrics == ["rnd"]
+    plan = route("What does Verizon say about investment in its network?", decide=says(True, ["Item 7"]))
+    assert plan.refusal is None

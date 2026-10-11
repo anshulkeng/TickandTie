@@ -8,6 +8,7 @@ The Router turns a question into a plan: companies, fiscal years, metrics, wheth
 ## Decision
 - Companies, years and metrics are found with plain rules. Companies match by name, alias or ticker; tickers only match in capitals, so ordinary words such as "cost" or "cat" are never read as tickers. Metric phrases match longest first.
 - A question that mentions no covered company is refused straight away, with the list of covered companies.
+- A question asking for investment advice ("should I buy", "worth buying", "price target") is refused before anything else runs. Tick & Tie reports what companies filed, not whether to trade their shares. The rule is narrow on purpose, and a test checks that questions about a company's own investment, such as R&D spending, are still answered.
 - The model makes one structured decision: whether text is needed and which sections to search. Its reply must fit a fixed schema.
 - Words such as why, explain, risks or describe always turn text search on. "How much" and "how many" do not.
 - If the model fails or replies with something invalid, the Router falls back to default sections and records that in the plan.
