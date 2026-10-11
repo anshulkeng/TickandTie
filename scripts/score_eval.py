@@ -6,6 +6,7 @@ Writes eval/scores/code_details.jsonl and eval/scores/code_scores.json, prints t
 every should-refuse and tricky answer and every wrong figure in full, so they can be read by hand."""
 import json
 import statistics
+import sys
 from collections import Counter
 from pathlib import Path
 
@@ -32,11 +33,13 @@ def shown(record, width=300):
 
 
 def main():
+    modes = tuple(sys.argv[1:]) or MODES  # for example: python -m scripts.score_eval system_v2
+    suffix = "" if modes == MODES else "_" + "_".join(modes)
     questions = {q["id"]: q for q in load(QUESTIONS)}
-    results = {mode: {r["id"]: r for r in load(RESULTS / f"{mode}.jsonl")} for mode in MODES}
+    results = {mode: {r["id"]: r for r in load(RESULTS / f"{mode}.jsonl")} for mode in modes}
     SCORES.mkdir(parents=True, exist_ok=True)
     details, summary = [], {}
-    for mode in MODES:
+    for mode in modes:
         records = results[mode]
         counts = {kind: Counter() for kind in ("numeric", "narrative", "refuse", "tricky")}
         for qid, q in questions.items():
@@ -67,9 +70,9 @@ def main():
             "seconds_p90": percentile(seconds, 0.9),
         }
 
-    (SCORES / "code_details.jsonl").write_text(
+    (SCORES / f"code_details{suffix}.jsonl").write_text(
         "".join(json.dumps(row) + "\n" for row in details), encoding="utf-8")
-    (SCORES / "code_scores.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
+    (SCORES / f"code_scores{suffix}.json").write_text(json.dumps(summary, indent=1), encoding="utf-8")
 
     for mode, s in summary.items():
         n, r, t, a = s["numeric"], s["refuse"], s["tricky"], s["narrative"]
@@ -95,7 +98,7 @@ def main():
     for qid, q in questions.items():
         if q["kind"] in ("refuse", "tricky"):
             print(f"\n{qid} ({q.get('expected', 'tricky')}) {q['question']}")
-            for mode in MODES:
+            for mode in modes:
                 row = next(d for d in details if d["id"] == qid and d["mode"] == mode)
                 verdict = row.get("acknowledged", row.get("passed"))
                 print(f"   {mode:<8} {'OK ' if verdict else 'BAD'} {shown(results[mode][qid], 220)}")
