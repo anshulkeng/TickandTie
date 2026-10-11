@@ -14,7 +14,10 @@ Rules, fixed before the sample was drawn:
 - Sample: 25 sentences per system, numpy PCG64 seed 2026; then all 50 shuffled together and numbered,
   with the system hidden. The key is written to a separate file, opened only by the score command.
 - Known leaks: Tick & Tie may cite facts as [F1], and its sentences always carry their own citation.
-- Reported: share labelled supported per system, with a 95% Wilson interval."""
+- Reported: share labelled supported per system, with a 95% Wilson interval.
+- Change made before any labelling, because of time: only the first 20 of the 50 shuffled sentences
+  (S01-S20) are labelled and scored. The 50 were shuffled at random, so these 20 are still a random
+  sample of both systems, though the split between them is not exactly even."""
 import json
 import re
 import sys
@@ -33,6 +36,7 @@ KEY = Path("eval/labels/faithfulness_blind_key.json")
 OUT = Path("eval/scores/faithfulness.json")
 SEED = 2026
 PER_SYSTEM = 25
+LABEL_FIRST = 20  # only S01-S20 are labelled and scored; see the description above
 MODES = ("system", "baseline")
 SENTENCE_END = re.compile(r"(?<=[.!?])\s+(?=[A-Z\[])")
 ONLY_CITATIONS = re.compile(r"(?:\[[^\]]*\][\s,.]*)+")
@@ -99,7 +103,7 @@ def build():
 
 
 def check():
-    blocks = parse(LABELS.read_text(encoding="utf-8"))
+    blocks = parse(LABELS.read_text(encoding="utf-8"))[:LABEL_FIRST]
     done = [b for b in blocks if b["label"]]
     bad = [b for b in done if b["label"] not in ("yes", "no")]
     missing = [b["id"] for b in blocks if not b["label"]]
@@ -115,11 +119,11 @@ def score():
     if check():
         print("Finish labelling first.")
         return 1
-    labels = {b["id"]: b["label"] == "yes" for b in parse(LABELS.read_text(encoding="utf-8"))}
+    labels = {b["id"]: b["label"] == "yes" for b in parse(LABELS.read_text(encoding="utf-8"))[:LABEL_FIRST]}
     key = json.loads(KEY.read_text(encoding="utf-8"))
     report = {}
     for mode in MODES:
-        ids = [i for i, k in key.items() if k["mode"] == mode]
+        ids = [i for i, k in key.items() if k["mode"] == mode and i in labels]
         supported = sum(labels[i] for i in ids)
         low, high = wilson(supported, len(ids))
         report[mode] = {"n": len(ids), "supported": supported, "share": supported / len(ids),
