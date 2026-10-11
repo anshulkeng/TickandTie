@@ -47,12 +47,13 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - XOM FY2023: Items 7 and 8 only point to a separate Financial Section, so there is no MD&A or notes text.
 - WMT FY2024: Item 8 is missing the notes to the financial statements.
 - Item 7A only points to Item 7 for JPM, JNJ, PFE, XOM and CAT.
-- Some extracted text has words glued together ("andAnalysis"). Effect on search to be measured in Task 3.
+- Some extracted text has words glued together ("andAnalysis"). Not measured separately; hybrid search still found 23 of 24 test answers in the top 5.
 
 ## Progress
 - Done: Task 1 (environment), Task 2 (ingestion).
 - Playbook done so far: Part 0, layers 1, 2, 7 and 8 (memory files, design and architecture docs, decision records, CI with branch protection, testing strategy).
-- Next: Task 3 (indexing and retrieval).
+- Done: Task 3 (indexing and retrieval). Hybrid search found a correct chunk in the top 5 for 23 of 24 test questions (decision record 0010).
+- Next: Task 4 (core agents).
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

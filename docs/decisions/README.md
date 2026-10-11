@@ -13,3 +13,4 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0007](0007-free-public-no-accounts.md) | A free public tool with no accounts or payments |
 | [0008](0008-data-not-committed.md) | Data is rebuilt, never committed |
 | [0009](0009-chunking.md) | Paragraph-aware chunks of about 1,200 characters, pointers skipped |
+| [0010](0010-hybrid-search.md) | Hybrid search with reciprocal rank fusion |
