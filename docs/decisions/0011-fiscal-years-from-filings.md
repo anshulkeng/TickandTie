@@ -14,4 +14,4 @@ A fiscal year's label is the fiscal year of the 10-K whose latest annual period 
 
 ## Consequences
 - This depends on the SEC's fiscal-year field being right for each filing. `scripts/try_numbers.py` prints every company's years so they can be checked by eye; on the first run all 12 matched the companies' real year ends.
-- "Walmart 2025" means Walmart's fiscal 2025, which ran from February 2024 to January 2025. The answer says so explicitly.
+- "Walmart 2025" means Walmart's fiscal 2025, which ran from February 2024 to January 2025. Every answer ends with a Periods line, built by code from the facts it cites, so the real dates are always shown. A live run showed why the model cannot be trusted with this: it called Microsoft's and NVIDIA's fiscal 2025 "the same fiscal year" although they ended five months apart.

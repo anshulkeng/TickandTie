@@ -41,19 +41,24 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Activate environment: .\venv\Scripts\Activate.ps1
 - Tests: python -m pytest -q
 - Environment check: python scripts\smoke_test.py
+- Ask a question: python -m scripts.ask "What was Apple's revenue in fiscal 2025?"
+- End-to-end check: python -m scripts.check_pipeline (needs Ollama running)
+- Read the latest trace for a question: python -m scripts.show_trace <words from the question>
 - Rebuild data, in order: python -m scripts.fetch_metadata, python -m scripts.ingest_filings, python -m scripts.load_facts
 
 ## Known gaps
 - XOM FY2023: Items 7 and 8 only point to a separate Financial Section, so there is no MD&A or notes text.
 - WMT FY2024: Item 8 is missing the notes to the financial statements.
 - Item 7A only points to Item 7 for JPM, JNJ, PFE, XOM and CAT.
+- Answers can blur what a passage's figure measures, for example "Data Center computing" becoming "Data Center". The figure is verified; its label is not. Measured in Task 5.
 - Some extracted text has words glued together ("andAnalysis"). Not measured separately; hybrid search still found 23 of 24 test answers in the top 5.
 
 ## Progress
 - Done: Task 1 (environment), Task 2 (ingestion).
 - Playbook done so far: Part 0, layers 1, 2, 7 and 8 (memory files, design and architecture docs, decision records, CI with branch protection, testing strategy).
 - Done: Task 3 (indexing and retrieval). Hybrid search found a correct chunk in the top 5 for 23 of 24 test questions (decision record 0010).
-- Next: Task 4 (core agents).
+- Done: Task 4 (core agents). `python -m scripts.ask` answers with verified, cited figures; 11 of 11 end-to-end checks pass, including a planted wrong number that is never shown.
+- Next: Task 5 (evaluation).
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

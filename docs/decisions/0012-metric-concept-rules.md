@@ -6,7 +6,7 @@ Status: Accepted, October 2026
 Companies use different SEC concepts for the same idea and switch between them over time (Pfizer and Costco did between 2023 and 2026). Some report two revenue figures: Walmart's total revenues include membership income, its net sales do not. For a bank, the meaningful revenue is net of interest expense.
 
 ## Decision
-- 12 metrics at launch, each with an ordered list of concepts. The first concept reported for that year is used; any others found are kept as alternates and mentioned in the answer.
+- 12 metrics at launch, each with an ordered list of concepts. The first concept reported for that year is used. Only for revenue, where a company can report two headline figures, are the others shown as well. For other metrics the later concepts are fallbacks for companies that lack the main one. A live run showed why: listing Walmart's ProfitLoss next to its NetIncomeLoss, both labelled net income, led the Writer to use the wrong pair and compute its own difference.
 - JPMorgan's revenue uses net revenue first.
 - When a value was re-reported in a later filing, the latest filed version is used.
 - Every answer names the concept it used.

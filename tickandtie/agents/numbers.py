@@ -17,11 +17,12 @@ class Metric:
     kind: str  # "duration": flows over the year; "instant": balance on the last day of the year
     unit: str
     concepts: tuple  # SEC concepts in order of preference (decision 0012)
+    show_alternates: bool = False  # only where a company can report two headline figures (revenue)
 
 
 METRICS = {
     "revenue": Metric("Revenue", "duration", "USD",
-                      ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet")),
+                      ("Revenues", "RevenueFromContractWithCustomerExcludingAssessedTax", "SalesRevenueNet"), show_alternates=True),
     # Caterpillar reports "profit" under the two fallbacks rather than NetIncomeLoss.
     "net_income": Metric("Net income", "duration", "USD",
                          ("NetIncomeLoss", "NetIncomeLossAvailableToCommonStockholdersBasic", "ProfitLoss")),

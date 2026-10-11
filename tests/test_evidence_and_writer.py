@@ -47,3 +47,13 @@ def test_rewrite_sends_the_previous_answer_and_the_problems():
     assert result == "Fixed answer [F1]."
     assert "<evidence>" in seen["messages"][1]["content"]
     assert seen["messages"][-1]["content"].startswith("Your answer failed these checks")
+
+def test_net_income_fallback_concepts_are_not_shown_as_extra_figures():
+    # Found in a live run: Walmart's ProfitLoss, shown as a second "net income", led the Writer astray.
+    main = Fact("WMT", "net_income", "Net income", "NetIncomeLoss", 21_893e6, "USD", 2026,
+                date(2025, 2, 1), date(2026, 1, 31), "acc", date(2026, 3, 13))
+    main.alternates = [Fact("WMT", "net_income", "Net income", "ProfitLoss", 22_270e6, "USD", 2026,
+                            date(2025, 2, 1), date(2026, 1, 31), "acc", date(2026, 3, 13))]
+    ev = Evidence()
+    assert ev.add_fact(main) == ["F1"]
+    assert ev.items["F1"].period == "Walmart fiscal 2026: 2025-02-01 to 2026-01-31"
