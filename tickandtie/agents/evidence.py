@@ -5,7 +5,7 @@ import re
 from dataclasses import dataclass, field
 
 from tickandtie import config
-from tickandtie.agents.numbers import change, format_value
+from tickandtie.agents.numbers import METRICS, change, format_value
 from tickandtie.index.search_indexes import ITEM_TITLES
 
 NUMBER = re.compile(r"(?<![\w.\-/])\$?(\d[\d,]*(?:\.\d+)?)")
@@ -27,23 +27,27 @@ class EvidenceItem:
     kind: str  # "fact" or "passage"
     text: str
     numbers: list  # for facts: only the figure itself, so dates and filing numbers are never "allowed"
+    period: str = None  # for facts: the dates the figure covers, shown to the user by code
 
 
 @dataclass
 class Evidence:
     items: dict = field(default_factory=dict)
 
-    def add(self, kind, text, numbers):
+    def add(self, kind, text, numbers, period=None):
         prefix = "F" if kind == "fact" else "P"
         item_id = f"{prefix}{sum(1 for item in self.items.values() if item.kind == kind) + 1}"
-        self.items[item_id] = EvidenceItem(item_id, kind, text, numbers)
+        self.items[item_id] = EvidenceItem(item_id, kind, text, numbers, period)
         return item_id
 
     def add_fact(self, fact):
-        """The fact, plus any other figure the company reported for the same metric and year."""
-        ids = [self.add("fact", describe_fact(fact), numbers_in(fact.display))]
-        for alternate in fact.alternates:
-            ids.append(self.add("fact", "Also reported: " + describe_fact(alternate), numbers_in(alternate.display)))
+        """The fact, plus other figures for the same year only where a metric can have two headline
+        figures (revenue). For other metrics the extra concepts are only fallbacks (decision 0012)."""
+        ids = [self.add("fact", describe_fact(fact), numbers_in(fact.display), describe_period(fact))]
+        if METRICS[fact.metric].show_alternates:
+            for alternate in fact.alternates:
+                ids.append(self.add("fact", "Also reported: " + describe_fact(alternate),
+                                    numbers_in(alternate.display), describe_period(alternate)))
         return ids
 
     def add_change(self, older, newer):
@@ -55,7 +59,8 @@ class Evidence:
         name = config.COMPANY_NAMES.get(newer.ticker, newer.ticker)
         text = (f"Change in {name} {newer.label.lower()} from fiscal {older.fiscal_year} "
                 f"to fiscal {newer.fiscal_year}: {difference} ({percent}), computed from the two reported figures.")
-        return self.add("fact", text, numbers_in(f"{difference} {percent}"))
+        period = f"{describe_period(older)}; {describe_period(newer)}"
+        return self.add("fact", text, numbers_in(f"{difference} {percent}"), period)
 
     def add_passage(self, chunk):
         name = config.COMPANY_NAMES.get(chunk["ticker"], chunk["ticker"])
@@ -67,6 +72,13 @@ class Evidence:
     def render(self):
         """Evidence as the Writer sees it. A passage can never close the evidence block early."""
         return "\n\n".join(f"[{item.id}] {item.text.replace('</evidence>', '')}" for item in self.items.values())
+
+
+def describe_period(fact):
+    name = config.COMPANY_NAMES.get(fact.ticker, fact.ticker)
+    if fact.period_start:
+        return f"{name} fiscal {fact.fiscal_year}: {fact.period_start} to {fact.period_end}"
+    return f"{name} fiscal {fact.fiscal_year}: year ended {fact.period_end}"
 
 
 def describe_fact(fact):
