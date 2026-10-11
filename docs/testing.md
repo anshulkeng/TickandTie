@@ -6,7 +6,7 @@
 | --- | --- | --- | --- |
 | Unit tests | tests/ | Yes, on every pull request | Parsing, cleaning, Item fallbacks, predecessor CIKs, XBRL flattening, chunking. No network. |
 | Pipeline checks | scripts/ | No (needs the SEC and Ollama) | smoke_test, fetch_metadata, ingest warnings, load_facts tie-outs. Run locally after any change to ingestion. |
-| Retrieval check | Task 3 | No | 10 hand-written questions must each find the Item that holds the answer. |
+| Retrieval check | Task 3 | No | 12 questions, each asked as written and paraphrased (24 searches). Results in decision record 0010. |
 | Evaluation | eval/, Task 5 | No | Numeric, narrative and unanswerable questions, a plain-RAG baseline, and a calibrated judge. |
 | API tests | tests/, Task 7 | Yes | Input validation, error format, submit and poll, rate limits, using a fake agent graph. |
 | Website tests | web/, Task 8 | Yes | The ask-a-question flow end to end, and an automated accessibility check. |
