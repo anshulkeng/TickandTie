@@ -8,6 +8,7 @@ TOLERANCE = 0.005
 NOT_COVERED = "Not covered:"
 CITATION = re.compile(r"\[([FP]\d+(?:\s*,\s*[FP]\d+)*)\]")
 CLAIM_END = re.compile(r"(?<=\])[.!?]\s+")
+CITATION_AFTER_STOP = re.compile(r"([.!?])\s*((?:\[[FP]\d+(?:\s*,\s*[FP]\d+)*\]\s*)+)")  # "...rose. [P2] Next..."
 FIGURE = re.compile(r"(?<![\w.\-/])(\$)?(\d[\d,]*(?:\.\d+)?)(\s?%)?")
 INNER_BREAK = re.compile(r"([\w%)]+)\.\s+(?=[A-Z])")
 ABBREVIATIONS = {"inc", "corp", "co", "ltd", "llc", "plc", "no", "vs", "etc", "mr", "ms", "dr", "st"}
@@ -25,8 +26,9 @@ NOT_FIGURES = [
 
 
 def split_claims(answer):
-    """A claim is a sentence: it ends at a citation followed by a full stop, so neither abbreviations like "Inc." nor a citation in mid-sentence split one."""
-    return [claim.strip() for claim in CLAIM_END.split(answer.strip()) if claim.strip()]
+    """A claim is a sentence: it ends at a citation followed by a full stop, so neither abbreviations like "Inc." nor a citation in mid-sentence split one. A citation written after the full stop ("...rose. [P2] Next...") is first moved before it."""
+    text = CITATION_AFTER_STOP.sub(lambda m: " " + m.group(2).strip() + m.group(1) + " ", answer.strip())
+    return [claim.strip() for claim in CLAIM_END.split(text.strip()) if claim.strip()]
 
 
 def inner_sentence_breaks(claim):
