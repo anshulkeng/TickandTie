@@ -16,3 +16,4 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0010](0010-hybrid-search.md) | Hybrid search with reciprocal rank fusion |
 | [0011](0011-fiscal-years-from-filings.md) | Fiscal years come from the filings |
 | [0012](0012-metric-concept-rules.md) | Everyday metrics map to SEC concepts by written rules |
+| [0013](0013-router-rules-first.md) | The Router uses rules first and the model for one decision |
