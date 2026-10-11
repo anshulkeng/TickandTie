@@ -1,0 +1,358 @@
+# Hand labels for judge calibration. For each block, set LABEL to yes or no.
+#
+# yes: everything the sentence says is stated in, or directly follows from, the cited evidence,
+#      including what each number measures (segment, period, unit).
+# no:  anything is missing from the evidence, overstated, relabelled (for example "Data Center"
+#      when the evidence says "Data Center computing"), or comes from outside knowledge.
+# Partly right counts as no. Label from the evidence shown, not from what you know about the company.
+# NOTE is optional: a few words on why, useful when the judge disagrees with you later.
+# Only edit the LABEL and NOTE lines.
+
+=== S01 | What was Apple's revenue in fiscal 2025?
+SENTENCE: Apple's revenue in fiscal 2025 was $416,161 million [F1].
+EVIDENCE [F1]: Apple revenue, fiscal 2025, 2024-09-29 to 2025-09-27: $416,161 million. Reported as RevenueFromContractWithCustomerExcludingAssessedTax in filing 0000320193-25-000079.
+LABEL: yes
+NOTE: 
+
+=== S02 | Compare Microsoft and NVIDIA research and development spending in fiscal 2025
+SENTENCE: Microsoft spent $32,488 million on research and development in fiscal 2025 [F1], while NVIDIA spent $12,914 million in the same fiscal year [F2]
+EVIDENCE [F1]: Microsoft research and development expense, fiscal 2025, 2024-07-01 to 2025-06-30: $32,488 million. Reported as ResearchAndDevelopmentExpense in filing 0001193125-26-323660.
+EVIDENCE [F2]: NVIDIA research and development expense, fiscal 2025, 2024-01-29 to 2025-01-26: $12,914 million. Reported as ResearchAndDevelopmentExpense in filing 0001045810-26-000021.
+LABEL: yes
+NOTE: 
+
+=== S03 | What are the main risks Pfizer describes?
+SENTENCE: Pfizer identifies several key risks, including managed care trends [P2], climate change and its physical and transitional risks [P3], the potential challenges and uncertainties associated with AI technology [P4], product manufacturing, sales, and marketing risks such as counterfeit threats [P6], and risks related to government regulation and pricing and reimbursement [P1, P6]
+EVIDENCE [P2]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+ITEM 1A. RISK FACTORS
+
+This section describes the material risks to our business, which should be considered carefully in addition to the other information in this report and our other filings with the SEC. Investors should be aware that it is not possible to predict or identify all such factors and that the following is not meant to be a complete discussion of all potential risks or uncertainties. Additionally, our business is subject to general risks applicable to any company, such as economic conditions, geopolitical events, extreme weather and natural disasters. If known or unknown risks or uncertainties materialize, our business operations, financial condition, operating results (including components of our financial results), cash flows, prospects, reputation or credit ratings could be materially adversely affected now and in the future. The following discussion of risk factors contains forward-looking statements, as discussed in the Forward-Looking Information and Factors that May Affect Future Results section.
+
+RISKS RELATED TO OUR BUSINESS, INDUSTRY AND OPERATIONS:
+
+MANAGED CARE TRENDS
+EVIDENCE [P3]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+Pfizer is subject to transitional and physical risks related to climate change. Transitional risks include, for example, a disorderly global transition away from fossil fuels that may result in increased energy prices; customer preference for low or no-carbon products; stakeholder pressure to decarbonize assets; or new legal or regulatory requirements that result in new or expanded carbon pricing, taxes, restrictions on GHG emissions, and increased GHG disclosure and transparency. These risks could increase operating costs, including the cost of our electricity and energy use, or otherwise increase compliance costs. Physical risks to our operations include water stress and drought; flooding and storm surge; wildfires; extreme temperatures and storms, which could impact pharmaceutical production, increase costs, or disrupt supply chains of medicines for patients. Our supply chain is subject to these same transitional and physical risks and would likely pass along any increased costs to us.
+EVIDENCE [P4]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+AI, including machine learning and generative AI, is increasingly being used in the biopharmaceutical and global healthcare industries. We have begun deploying AI in various parts of our internal and external operations, including in R&D, and continue to explore further use cases for AI, and our investments in AI may not yield anticipated benefits. As with many developing technologies, AI presents risks and challenges. For example, existing regulatory frameworks governing the use, development, and deployment of AI, including regulatory guidance on the use of AI in medical products, remain uncertain and subject to significant change. New regulatory requirements could impose significant compliance costs, limit our ability to deploy AI, require changes to our practices (including documentation, risk management, testing, or transparency measures), or increase litigation and enforcement risk. In addition, AI may be used by payors to limit access to care or to deny prior authorization requests, which could impact Pfizer’s business results. Further, AI technology itself can give rise to risks. Generative AI output is probabilistic in nature and may not be reproducible or generate consistent results over time. AI can generate outputs that are false, misleading, incomplete, or inconsistent, and may be difficult to monitor, explain, or reproduce. AI performance may also degrade over time due to changes in inputs, data drift, updates by vendors, or adversarial manipulation.
+EVIDENCE [P6]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+Counterfeiters generally target any medicine or vaccine boasting strong demand and we have observed heightened counterfeit and fraud attempts to our internal medicine portfolio, our oncology portfolio, as well as products utilized in the treatment of COVID-19 and competitor products in therapeutic areas where we are conducting R&D.
+
+We consistently invest in an enterprise-wide strategy to aggressively combat counterfeit threats by educating patients and healthcare providers about the risks, investing in innovative technologies to detect and disrupt sophisticated internet offers and scams, proactively monitoring and interdicting supply with the help of law enforcement, and advising legislators and regulators. However, our efforts and those of others may not be entirely successful, and the presence of counterfeit medicines may continue to increase.
+
+RISKS RELATED TO GOVERNMENT REGULATION AND LEGAL PROCEEDINGS:
+
+PRICING AND REIMBURSEMENT
+EVIDENCE [P1]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+at prices that are regulated by foreign governments, revisions to reimbursement of biopharmaceuticals under government programs that could reference international prices or require new discounts, including through a CMMI demonstration, the FDA's recently adopted policy of disclosing Complete Response Letters for unapproved drug candidates and the attendant risk of disclosure of trade secrets or confidential commercial information, limitations on interactions with healthcare professionals and other industry stakeholders, restrictions on pharmaceutical advertising, or the use of comparative effectiveness methodologies that could be implemented in a manner that focuses primarily on cost differences and minimizes the therapeutic differences among pharmaceutical products and restricts access to innovative medicines. In addition, we may face increased risks to, among other things, our business, revenue, earnings, reputation or financial guidance, as a result of recent or potential changes to vaccine or other healthcare policy in the U.S. Further, the evolving vaccine landscape is becoming more challenging and increases risks to Pfizer.
+LABEL: yes
+NOTE: The listed risks are identified in the cited evidence.
+
+=== S04 | Why did NVIDIA's revenue grow so fast?
+SENTENCE: NVIDIA's revenue grew rapidly in fiscal year 2026 due to strong demand for its Blackwell architecture in the Data Center computing segment [P2]
+EVIDENCE [P2]: NVIDIA 10-K for the period ending 2026-01-25, Item 7 Management's Discussion and Analysis, filing 0001045810-26-000021:
+Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms.
+
+Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture.
+
+Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue.
+
+40
+
+Concentration of Revenue
+LABEL: no
+NOTE: Evidence supports Blackwell demand driving Data Center computing growth, not the claim that it explains NVIDIA's overall revenue growth.
+
+=== S05 | Why did NVIDIA's revenue grow so fast?
+SENTENCE: This growth was driven by the introduction and ramp-up of the NVLink compute fabric for GB200 and GB300 systems, as well as the expansion of Ethernet and InfiniBand platforms [P2]
+EVIDENCE [P2]: NVIDIA 10-K for the period ending 2026-01-25, Item 7 Management's Discussion and Analysis, filing 0001045810-26-000021:
+Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms.
+
+Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture.
+
+Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue.
+
+40
+
+Concentration of Revenue
+LABEL: no
+NOTE: The cited drivers specifically explain Data Center networking revenue growth; the sentence does not identify that segment.
+
+=== S06 | Why did NVIDIA's revenue grow so fast?
+SENTENCE: The Graphics segment also saw a 41% increase in revenue, primarily due to the high demand for Blackwell architecture [P3]
+EVIDENCE [P3]: NVIDIA 10-K for the period ending 2026-01-25, Item 7 Management's Discussion and Analysis, filing 0001045810-26-000021:
+Year Ended
+Jan 25, 2026 Jan 26, 2025 Change
+($ in millions, except per share data)
+Revenue $215,938 $130,497 Up 65%
+Gross margin 71.1% 75.0% -3.9 pts
+Operating expenses $23,076 $16,405 Up 41%
+Operating income $130,387 $81,453 Up 60%
+Net income $120,067 $72,880 Up 65%
+Net income per diluted share $4.90 $2.94 Up 67%
+
+Revenue for fiscal year 2026 was $215.9 billion, up 65% from a year ago.
+
+Data Center revenue for fiscal year 2026 was up 68% from a year ago. The strong year-on-year growth was driven by the major platform shifts – accelerated computing and AI.
+
+Gaming revenue for fiscal year 2026 was up 41% from a year ago, driven by strong Blackwell demand. We expect supply constraints to be a headwind to Gaming in the first quarter of fiscal 2027 and beyond.
+
+Professional Visualization revenue for fiscal year 2026 was up 70% from a year ago, driven by exceptional demand for Blackwell as well as the launch of our new DGX Spark.
+
+Automotive revenue for fiscal year 2026 was up 39% from a year ago, driven by continued adoption of our self-driving platforms.
+LABEL: no
+NOTE: The 41% increase is for Gaming, not Graphics.
+
+=== S07 | How does JPMorgan manage interest rate risk?
+SENTENCE: JPMorgan manages interest rate risk through the portfolio layer method, where basis adjustments are maintained at the portfolio level and only allocated to individual assets under specific circumstances [P1]
+EVIDENCE [P1]: JPMorgan Chase 10-K for the period ending 2025-12-31, Item 8 Financial Statements, filing 0001628280-26-008131:
+The Firm employs the portfolio layer method to manage the interest rate risk of portfolios of fixed-rate assets. Throughout the life of the open hedge, basis adjustments are maintained at the portfolio level and are only allocated to individual assets under certain circumstances. These include instances where the portfolio amount falls below the hedged layer amounts, or in cases of voluntary de-designation.
+LABEL: yes
+NOTE: 
+
+=== S08 | How does JPMorgan manage interest rate risk?
+SENTENCE: The Firm also uses interest rate derivatives to manage the risk associated with changes in interest rates, as these derivatives help offset the variability in market value and income from fixed-rate assets and liabilities [P2]
+EVIDENCE [P2]: JPMorgan Chase 10-K for the period ending 2025-12-31, Item 8 Financial Statements, filing 0001628280-26-008131:
+The Firm manages certain market and credit risk exposures using derivative instruments, including derivatives in hedge accounting relationships and other derivatives that are used to manage risks associated with specified assets and liabilities.
+
+The Firm generally uses interest rate derivatives to manage the risk associated with changes in interest rates. Fixed-rate assets and liabilities appreciate or depreciate in market value as interest rates change. Similarly, interest income and expense increase or decrease as a result of variable-rate assets and liabilities resetting to current market rates, and as a result of the repayment and subsequent origination or issuance of fixed-rate assets and liabilities at current market rates. Gains and losses on the derivative instruments related to these assets and liabilities are expected to substantially offset this variability.
+LABEL: yes
+NOTE: 
+
+=== S09 | How does JPMorgan manage interest rate risk?
+SENTENCE: A dedicated risk function, reporting to the CTC CRO, provides independent oversight and governance around assumptions and establishes and monitors limits for structural interest rate risk [P3]
+EVIDENCE [P3]: JPMorgan Chase 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0001628280-26-008131:
+The CTC Risk Committee establishes the Firm’s interest rate risk management policy and related limits, which are subject to approval by the Board Risk Committee. Treasury and CIO, working in partnership with the LOBs, calculates the Firm’s structural interest rate risk profile and reviews it with senior management, including the CTC Risk Committee. In addition, oversight of structural interest rate risk is managed through a dedicated risk function reporting to the CTC CRO. This risk function is responsible for providing independent oversight and governance around assumptions and establishing and monitoring limits for structural interest rate risk, including limits related to earnings-at-risk and economic value sensitivity. The Firm manages structural interest rate risk generally through its investment securities portfolio and interest rate derivatives.
+
+Key risk drivers and risk management process
+
+Structural interest rate risk can arise due to a variety of factors, including:
+
+•Differences in timing among the maturity or repricing of assets, liabilities and off-balance sheet instruments
+LABEL: yes
+NOTE: 
+
+=== S10 | How does JPMorgan manage interest rate risk?
+SENTENCE: Key risk drivers include differences in the timing of the maturity or repricing of assets, liabilities, and off-balance sheet instruments [P3]
+EVIDENCE [P3]: JPMorgan Chase 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0001628280-26-008131:
+The CTC Risk Committee establishes the Firm’s interest rate risk management policy and related limits, which are subject to approval by the Board Risk Committee. Treasury and CIO, working in partnership with the LOBs, calculates the Firm’s structural interest rate risk profile and reviews it with senior management, including the CTC Risk Committee. In addition, oversight of structural interest rate risk is managed through a dedicated risk function reporting to the CTC CRO. This risk function is responsible for providing independent oversight and governance around assumptions and establishing and monitoring limits for structural interest rate risk, including limits related to earnings-at-risk and economic value sensitivity. The Firm manages structural interest rate risk generally through its investment securities portfolio and interest rate derivatives.
+
+Key risk drivers and risk management process
+
+Structural interest rate risk can arise due to a variety of factors, including:
+
+•Differences in timing among the maturity or repricing of assets, liabilities and off-balance sheet instruments
+LABEL: yes
+NOTE: 
+
+=== S11 | What was J&J's diluted EPS in 2023?
+SENTENCE: J&J's diluted EPS in 2023 was $13.72 per share [F1].
+EVIDENCE [F1]: Johnson & Johnson diluted earnings per share, fiscal 2023, 2023-01-02 to 2023-12-31: $13.72 per share. Reported as EarningsPerShareDiluted in filing 0000200406-26-000016.
+LABEL: yes
+NOTE: 
+
+=== S12 | What does Exxon say about climate change?
+SENTENCE: ExxonMobil acknowledges the evolving international accords and regulations on greenhouse gas emissions, noting that the impact on its business is uncertain [P1]
+EVIDENCE [P1]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+International accords and underlying regional and national regulations covering greenhouse gas emissions continue to evolve with uncertain timing and outcome, making it difficult to predict their business impact. For many years, the Corporation has taken into account policies established to reduce energy-related greenhouse gas emissions in its long-term Outlook. The climate accord reached at the 2015 Conference of the Parties (COP 21) in Paris set many new goals, and many related policies are still emerging. Our Outlook reflects an environment with increasingly stringent climate policies and seeks to identify potential impacts of these climate-related government policies, which often target specific sectors. For purposes of the Outlook, a proxy cost on energy-related CO2 emissions is assumed, based on regional considerations and relative levels of economic development, and by 2050, reaches up to $150 per metric ton for OECD nations and up to $100 per metric ton for non-OECD nations. As people and nations look for ways to reduce risks of global climate change, they will continue to need practical solutions that do not jeopardize the affordability or reliability of the energy they need. The Corporation continues to monitor the updates to the Nationally Determined Contributions (NDCs) that are submitted by nations that are signatories to the Paris Agreement, as well as other policy developments in light of net-zero ambitions formulated by some nations.
+LABEL: yes
+NOTE: 
+
+=== S13 | What does Exxon say about climate change?
+SENTENCE: The company's long-term Outlook reflects an environment with increasingly stringent climate policies, assuming a proxy cost on energy-related CO2 emissions that could reach up to $150 per metric ton for OECD nations and $100 per metric ton for non-OECD nations by 2050 [P1]
+EVIDENCE [P1]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+International accords and underlying regional and national regulations covering greenhouse gas emissions continue to evolve with uncertain timing and outcome, making it difficult to predict their business impact. For many years, the Corporation has taken into account policies established to reduce energy-related greenhouse gas emissions in its long-term Outlook. The climate accord reached at the 2015 Conference of the Parties (COP 21) in Paris set many new goals, and many related policies are still emerging. Our Outlook reflects an environment with increasingly stringent climate policies and seeks to identify potential impacts of these climate-related government policies, which often target specific sectors. For purposes of the Outlook, a proxy cost on energy-related CO2 emissions is assumed, based on regional considerations and relative levels of economic development, and by 2050, reaches up to $150 per metric ton for OECD nations and up to $100 per metric ton for non-OECD nations. As people and nations look for ways to reduce risks of global climate change, they will continue to need practical solutions that do not jeopardize the affordability or reliability of the energy they need. The Corporation continues to monitor the updates to the Nationally Determined Contributions (NDCs) that are submitted by nations that are signatories to the Paris Agreement, as well as other policy developments in light of net-zero ambitions formulated by some nations.
+LABEL: yes
+NOTE: 
+
+=== S14 | What does Exxon say about climate change?
+SENTENCE: ExxonMobil continues to monitor updates to Nationally Determined Contributions and other policy developments related to net-zero ambitions [P1]
+EVIDENCE [P1]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+International accords and underlying regional and national regulations covering greenhouse gas emissions continue to evolve with uncertain timing and outcome, making it difficult to predict their business impact. For many years, the Corporation has taken into account policies established to reduce energy-related greenhouse gas emissions in its long-term Outlook. The climate accord reached at the 2015 Conference of the Parties (COP 21) in Paris set many new goals, and many related policies are still emerging. Our Outlook reflects an environment with increasingly stringent climate policies and seeks to identify potential impacts of these climate-related government policies, which often target specific sectors. For purposes of the Outlook, a proxy cost on energy-related CO2 emissions is assumed, based on regional considerations and relative levels of economic development, and by 2050, reaches up to $150 per metric ton for OECD nations and up to $100 per metric ton for non-OECD nations. As people and nations look for ways to reduce risks of global climate change, they will continue to need practical solutions that do not jeopardize the affordability or reliability of the energy they need. The Corporation continues to monitor the updates to the Nationally Determined Contributions (NDCs) that are submitted by nations that are signatories to the Paris Agreement, as well as other policy developments in light of net-zero ambitions formulated by some nations.
+LABEL: yes
+NOTE: 
+
+=== S15 | What does Exxon say about climate change?
+SENTENCE: The company emphasizes that energy demand models are forward-looking and come with significant uncertainty, and it does not endorse any particular scenario [P2]
+EVIDENCE [P2]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+Energy demand models are forward-looking by nature and aim to replicate system dynamics of the global energy system, requiring simplifications. The reference to any scenario in this report, including any potential net-zero scenarios, does not imply ExxonMobil views any particular scenario as likely to occur. In addition, energy demand scenarios require assumptions on a variety of parameters. As such, the outcome of any given scenario using an energy demand model comes with a high degree of uncertainty. Third-party scenarios discussed in this report reflect the modeling assumptions and outputs of their respective authors, not ExxonMobil, and their use by ExxonMobil is not an endorsement by ExxonMobil of their underlying assumptions, likelihood, or probability. Investment decisions are made on the basis of ExxonMobil’s separate planning process. Any use of the modeling of a third-party organization within this report does not constitute or imply an endorsement by ExxonMobil of any or all of the positions or activities of such organization.
+LABEL: yes
+NOTE: 
+
+=== S16 | What was Apple's revenue in fiscal 2025?
+SENTENCE: Apple's revenue for fiscal 2025, from September 29, 2024, to September 27, 2025, was $416,161 million [F1].
+EVIDENCE [F1]: Apple revenue, fiscal 2025, 2024-09-29 to 2025-09-27: $416,161 million. Reported as RevenueFromContractWithCustomerExcludingAssessedTax in filing 0000320193-25-000079.
+LABEL: yes
+NOTE: 
+
+=== S17 | How did Walmart's net income change from FY2025 to FY2026?
+SENTENCE: Walmart's net income increased from $19,436 million in fiscal 2025 [F1] to $21,893 million in fiscal 2026 [F2], a change of $2,457 million, or 12.6% [F3]
+EVIDENCE [F1]: Walmart net income, fiscal 2025, 2024-02-01 to 2025-01-31: $19,436 million. Reported as NetIncomeLoss in filing 0000104169-26-000055.
+EVIDENCE [F2]: Walmart net income, fiscal 2026, 2025-02-01 to 2026-01-31: $21,893 million. Reported as NetIncomeLoss in filing 0000104169-26-000055.
+EVIDENCE [F3]: Change in Walmart net income from fiscal 2025 to fiscal 2026: +$2,457 million (+12.6%), computed from the two reported figures.
+LABEL: no 
+NOTE: F1 confirms the FY2025 net income of 19,436 million. F2 provides the FY2026 net income of 21,893 million and F3 provides the increase of 2,457 million (12.6%), supporting that net income increased. However, the sentence is incomplete because it states only the FY2025 starting value and does not include the FY2026 value or the calculated change.
+
+=== S18 | How did Walmart's net income change from FY2025 to FY2026?
+SENTENCE: This increase was reported in both the U.S. and international segments, with the U.S. segment seeing a $2.1 billion increase and the international segment a $3.9 billion increase [P1, P2, P3]
+EVIDENCE [P1]: Walmart 10-K for the period ending 2026-01-31, Item 7 Management's Discussion and Analysis, filing 0000104169-26-000055:
+As a result of the factors discussed above, we reported $22.3 billion and $20.2 billion of consolidated net income for fiscal 2026 and 2025, respectively, which represent increases of $2.1 billion and $3.9 billion for fiscal 2026 and 2025, respectively, when compared to the previous fiscal year. Diluted net income per common share attributable to Walmart ("EPS") was $2.73, $2.41 and $1.91 for fiscal 2026, 2025 and 2024, respectively.
+
+Walmart U.S. Segment
+
+Fiscal Years Ended January 31,
+(Dollar amounts and retail square feet in millions) 2026 2025 2024
+Net sales $ 482,975 $ 462,415 $ 441,817
+Net sales percentage change from comparable period 4.4 % 4.7 % 5.1 %
+Calendar comparable sales increase 4.3 % 4.8 % 5.5 %
+Membership and other income 2,624 2,594 1,985
+Gross profit 132,615 125,964 118,254
+Operating expenses 110,081 104,676 98,085
+Operating income $ 25,158 $ 23,882 $ 22,154
+Percentage of net sales
+Gross profit 27.5 % 27.2 % 26.8 %
+Operating expenses 22.8 % 22.6 % 22.2 %
+Operating income 5.2 % 5.2 % 5.0 %
+Retail unit counts at period end 4,611 4,605 4,615
+Retail square feet at period end 699 698 699
+EVIDENCE [P2]: Walmart 10-K for the period ending 2026-01-31, Item 7 Management's Discussion and Analysis, filing 0000104169-26-000055:
+Fiscal Years Ended January 31,
+(Dollar amounts and retail square feet in millions) 2026 2025 2024
+Net sales $ 706,413 $ 674,538 $ 642,637
+Percentage change from comparable period 4.7 % 5.0 % 6.1 %
+Membership and other income(1) 6,750 6,447 5,488
+Total revenues 713,163 680,985 648,125
+Percentage change from comparable period 4.7 % 5.1 % 6.0 %
+Gross profit(2) 171,018 162,785 152,495
+Operating expenses(2) 147,943 139,884 130,971
+Operating income 29,825 29,348 27,012
+Other (gains) and losses (2,075) 794 3,027
+Consolidated net income $ 22,270 $ 20,157 $ 16,270
+Percentage of net sales
+Gross profit 24.2 % 24.1 % 23.7 %
+Operating expenses 20.9 % 20.7 % 20.4 %
+Operating income 4.2 % 4.4 % 4.2 %
+Retail unit counts at period end 10,955 10,771 10,616
+Retail square feet at period end 1,057 1,053 1,053
+
+(1)Membership and other income includes membership fees and other items such as rental and tenant income, recycling income, gift card breakage income, as well as other income from corporate campus facilities.
+
+(2)Gross profit is defined as net sales less cost of sales. Operating expenses refers to operating, selling, general and administrative expenses.
+EVIDENCE [P3]: Walmart 10-K for the period ending 2026-01-31, Item 7 Management's Discussion and Analysis, filing 0000104169-26-000055:
+Walmart International SegmentFiscal Years Ended January 31,
+(Dollar amounts and retail square feet in millions) 2026 2025 2024
+Net sales $ 130,423 $ 121,885 $ 114,641
+Percentage change from comparable period 7.0 % 6.3 % 13.5 %
+Membership and other income 1,565 1,478 1,408
+Gross profit 27,847 26,618 24,810
+Operating expenses 24,309 22,595 21,309
+Operating income $ 5,103 $ 5,501 $ 4,909
+Percentage of net sales
+Gross profit 21.4 % 21.8 % 21.6 %
+Operating expenses 18.6 % 18.5 % 18.6 %
+Operating income 3.9 % 4.5 % 4.3 %
+Retail unit counts at period end 5,743 5,566 5,402
+Retail square feet at period end 278 274 274
+
+Net sales for the Walmart International segment increased $8.5 billion or 7.0% and $7.2 billion or 6.3% for fiscal 2026 and 2025, respectively, when compared to the previous fiscal year. Net sales growth was primarily due to positive comparable sales growth across our international markets, which includes strong eCommerce growth of $6.3 billion and $4.7 billion for fiscal 2026 and 2025, respectively. The increases were partially offset by negative fluctuations in currency exchange rates of $2.8 billion and $3.2 billion for fiscal 2026 and 2025, respectively.
+LABEL: no
+NOTE: The $2.1 billion and $3.9 billion increases refer to different fiscal years of consolidated net income, not increases in the U.S. and international segments.
+
+=== S19 | Compare Microsoft and NVIDIA research and development spending in fiscal 2025
+SENTENCE: Microsoft spent $32,488 million on research and development in fiscal 2025, while NVIDIA spent $12,914 million. [F1, F2]
+EVIDENCE [F1]: Microsoft research and development expense, fiscal 2025, 2024-07-01 to 2025-06-30: $32,488 million. Reported as ResearchAndDevelopmentExpense in filing 0001193125-26-323660.
+EVIDENCE [F2]: NVIDIA research and development expense, fiscal 2025, 2024-01-29 to 2025-01-26: $12,914 million. Reported as ResearchAndDevelopmentExpense in filing 0001045810-26-000021.
+LABEL: yes
+NOTE: 
+
+=== S20 | What are the main risks Pfizer describes?
+SENTENCE: Pfizer identifies several key risks in its annual report, including managed care trends [P2], climate change and its impact on operations [P3], the potential challenges and uncertainties associated with AI technology [P4], risks related to product manufacturing, sales, and marketing such as counterfeit threats [P5], and the complexities of government regulation and pricing [P6]
+EVIDENCE [P2]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+ITEM 1A. RISK FACTORS
+
+This section describes the material risks to our business, which should be considered carefully in addition to the other information in this report and our other filings with the SEC. Investors should be aware that it is not possible to predict or identify all such factors and that the following is not meant to be a complete discussion of all potential risks or uncertainties. Additionally, our business is subject to general risks applicable to any company, such as economic conditions, geopolitical events, extreme weather and natural disasters. If known or unknown risks or uncertainties materialize, our business operations, financial condition, operating results (including components of our financial results), cash flows, prospects, reputation or credit ratings could be materially adversely affected now and in the future. The following discussion of risk factors contains forward-looking statements, as discussed in the Forward-Looking Information and Factors that May Affect Future Results section.
+
+RISKS RELATED TO OUR BUSINESS, INDUSTRY AND OPERATIONS:
+
+MANAGED CARE TRENDS
+EVIDENCE [P3]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+Pfizer is subject to transitional and physical risks related to climate change. Transitional risks include, for example, a disorderly global transition away from fossil fuels that may result in increased energy prices; customer preference for low or no-carbon products; stakeholder pressure to decarbonize assets; or new legal or regulatory requirements that result in new or expanded carbon pricing, taxes, restrictions on GHG emissions, and increased GHG disclosure and transparency. These risks could increase operating costs, including the cost of our electricity and energy use, or otherwise increase compliance costs. Physical risks to our operations include water stress and drought; flooding and storm surge; wildfires; extreme temperatures and storms, which could impact pharmaceutical production, increase costs, or disrupt supply chains of medicines for patients. Our supply chain is subject to these same transitional and physical risks and would likely pass along any increased costs to us.
+EVIDENCE [P4]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+AI, including machine learning and generative AI, is increasingly being used in the biopharmaceutical and global healthcare industries. We have begun deploying AI in various parts of our internal and external operations, including in R&D, and continue to explore further use cases for AI, and our investments in AI may not yield anticipated benefits. As with many developing technologies, AI presents risks and challenges. For example, existing regulatory frameworks governing the use, development, and deployment of AI, including regulatory guidance on the use of AI in medical products, remain uncertain and subject to significant change. New regulatory requirements could impose significant compliance costs, limit our ability to deploy AI, require changes to our practices (including documentation, risk management, testing, or transparency measures), or increase litigation and enforcement risk. In addition, AI may be used by payors to limit access to care or to deny prior authorization requests, which could impact Pfizer’s business results. Further, AI technology itself can give rise to risks. Generative AI output is probabilistic in nature and may not be reproducible or generate consistent results over time. AI can generate outputs that are false, misleading, incomplete, or inconsistent, and may be difficult to monitor, explain, or reproduce. AI performance may also degrade over time due to changes in inputs, data drift, updates by vendors, or adversarial manipulation.
+EVIDENCE [P5]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+In addition, our borrowing, pension benefit and postretirement benefit obligations and interest-bearing investments are subject to risk from changes in interest and exchange rates. The risks related to interest-bearing investments and borrowings and the measures we have taken to help contain them are discussed in the Analysis of Financial Condition, Liquidity, Capital Resources and Market Risk section within MD&A and Note 7E. For additional details on critical accounting estimates and assumptions for our benefit plans, see the Significant Accounting Policies and Application of Critical Accounting Estimates and Assumptions—Benefit Plans section within MD&A and Note 11.
+
+PRODUCT MANUFACTURING, SALES AND MARKETING RISKS
+EVIDENCE [P6]: Pfizer 10-K for the period ending 2025-12-31, Item 1A Risk Factors, filing 0000078003-26-000026:
+Counterfeiters generally target any medicine or vaccine boasting strong demand and we have observed heightened counterfeit and fraud attempts to our internal medicine portfolio, our oncology portfolio, as well as products utilized in the treatment of COVID-19 and competitor products in therapeutic areas where we are conducting R&D.
+
+We consistently invest in an enterprise-wide strategy to aggressively combat counterfeit threats by educating patients and healthcare providers about the risks, investing in innovative technologies to detect and disrupt sophisticated internet offers and scams, proactively monitoring and interdicting supply with the help of law enforcement, and advising legislators and regulators. However, our efforts and those of others may not be entirely successful, and the presence of counterfeit medicines may continue to increase.
+
+RISKS RELATED TO GOVERNMENT REGULATION AND LEGAL PROCEEDINGS:
+
+PRICING AND REIMBURSEMENT
+LABEL: no
+NOTE: The cited P5 evidence concerns interest and exchange rate risks, not counterfeit threats; P6 supports counterfeit threats, not the stated pricing and regulation claim.
+
+=== S21 | Why did NVIDIA's revenue grow so fast?
+SENTENCE: NVIDIA's revenue growth in fiscal year 2026 was driven by the major platform shifts towards accelerated computing and AI, particularly in the Data Center segment, where revenue grew 59% due to demand for the Blackwell computing platform [P2]
+EVIDENCE [P2]: NVIDIA 10-K for the period ending 2026-01-25, Item 7 Management's Discussion and Analysis, filing 0001045810-26-000021:
+Compute & Networking revenue – The year over year increase was driven by the major platform shifts – accelerated computing and AI. Revenue from Data Center computing grew 59% driven by demand for our Blackwell computing platform. Revenue from Data Center networking grew 142% driven by the introduction and continued ramp of NVLink compute fabric for GB200 and GB300 systems and the growth of Ethernet and InfiniBand platforms.
+
+Graphics revenue – The year over year increase was driven by sales of our Blackwell architecture.
+
+Reportable segment operating income – The year over year increase in Compute & Networking segment operating income was driven by growth in revenue, partially offset by a $4.5 billion charge associated with H20 excess inventory and purchase obligations in the first quarter of fiscal year 2026. The year over year increase in Graphics segment operating income was driven by the growth in revenue.
+
+40
+
+Concentration of Revenue
+LABEL: no
+NOTE: The evidence says Data Center computing revenue grew 59%; it does not say the broader Data Center segment grew 59%.
+
+=== S22 | Why did NVIDIA's revenue grow so fast?
+SENTENCE: The Graphics segment also saw a 41% increase in revenue, largely from strong Blackwell demand [P3]
+EVIDENCE [P3]: NVIDIA 10-K for the period ending 2026-01-25, Item 7 Management's Discussion and Analysis, filing 0001045810-26-000021:
+Year Ended
+Jan 25, 2026 Jan 26, 2025 Change
+($ in millions, except per share data)
+Revenue $215,938 $130,497 Up 65%
+Gross margin 71.1% 75.0% -3.9 pts
+Operating expenses $23,076 $16,405 Up 41%
+Operating income $130,387 $81,453 Up 60%
+Net income $120,067 $72,880 Up 65%
+Net income per diluted share $4.90 $2.94 Up 67%
+
+Revenue for fiscal year 2026 was $215.9 billion, up 65% from a year ago.
+
+Data Center revenue for fiscal year 2026 was up 68% from a year ago. The strong year-on-year growth was driven by the major platform shifts – accelerated computing and AI.
+
+Gaming revenue for fiscal year 2026 was up 41% from a year ago, driven by strong Blackwell demand. We expect supply constraints to be a headwind to Gaming in the first quarter of fiscal 2027 and beyond.
+
+Professional Visualization revenue for fiscal year 2026 was up 70% from a year ago, driven by exceptional demand for Blackwell as well as the launch of our new DGX Spark.
+
+Automotive revenue for fiscal year 2026 was up 39% from a year ago, driven by continued adoption of our self-driving platforms.
+LABEL: no
+NOTE: The 41% growth and Blackwell demand refer to Gaming, not Graphics.
+
+=== S23 | How does JPMorgan manage interest rate risk?
+SENTENCE: The Firm also uses derivative instruments to manage risks associated with changes in interest rates, with gains and losses on these derivatives expected to offset the variability in fixed-rate assets and liabilities [P2]
+EVIDENCE [P2]: JPMorgan Chase 10-K for the period ending 2025-12-31, Item 8 Financial Statements, filing 0001628280-26-008131:
+The Firm manages certain market and credit risk exposures using derivative instruments, including derivatives in hedge accounting relationships and other derivatives that are used to manage risks associated with specified assets and liabilities.
+
+The Firm generally uses interest rate derivatives to manage the risk associated with changes in interest rates. Fixed-rate assets and liabilities appreciate or depreciate in market value as interest rates change. Similarly, interest income and expense increase or decrease as a result of variable-rate assets and liabilities resetting to current market rates, and as a result of the repayment and subsequent origination or issuance of fixed-rate assets and liabilities at current market rates. Gains and losses on the derivative instruments related to these assets and liabilities are expected to substantially offset this variability.
+LABEL: yes
+NOTE: 
+
+=== S24 | What does Exxon say about climate change?
+SENTENCE: ExxonMobil acknowledges the evolving international accords and regulations related to greenhouse gas emissions, noting that these policies are still emerging and may have uncertain impacts on its business [P1]
+EVIDENCE [P1]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+International accords and underlying regional and national regulations covering greenhouse gas emissions continue to evolve with uncertain timing and outcome, making it difficult to predict their business impact. For many years, the Corporation has taken into account policies established to reduce energy-related greenhouse gas emissions in its long-term Outlook. The climate accord reached at the 2015 Conference of the Parties (COP 21) in Paris set many new goals, and many related policies are still emerging. Our Outlook reflects an environment with increasingly stringent climate policies and seeks to identify potential impacts of these climate-related government policies, which often target specific sectors. For purposes of the Outlook, a proxy cost on energy-related CO2 emissions is assumed, based on regional considerations and relative levels of economic development, and by 2050, reaches up to $150 per metric ton for OECD nations and up to $100 per metric ton for non-OECD nations. As people and nations look for ways to reduce risks of global climate change, they will continue to need practical solutions that do not jeopardize the affordability or reliability of the energy they need. The Corporation continues to monitor the updates to the Nationally Determined Contributions (NDCs) that are submitted by nations that are signatories to the Paris Agreement, as well as other policy developments in light of net-zero ambitions formulated by some nations.
+LABEL: yes
+NOTE: 
+
+=== S25 | What does Exxon say about climate change?
+SENTENCE: ExxonMobil continues to monitor updates to the Nationally Determined Contributions submitted by signatories to the Paris Agreement and other policy developments in light of net-zero ambitions formulated by some nations [P1]
+EVIDENCE [P1]: ExxonMobil 10-K for the period ending 2025-12-31, Item 7 Management's Discussion and Analysis, filing 0000034088-26-000045:
+International accords and underlying regional and national regulations covering greenhouse gas emissions continue to evolve with uncertain timing and outcome, making it difficult to predict their business impact. For many years, the Corporation has taken into account policies established to reduce energy-related greenhouse gas emissions in its long-term Outlook. The climate accord reached at the 2015 Conference of the Parties (COP 21) in Paris set many new goals, and many related policies are still emerging. Our Outlook reflects an environment with increasingly stringent climate policies and seeks to identify potential impacts of these climate-related government policies, which often target specific sectors. For purposes of the Outlook, a proxy cost on energy-related CO2 emissions is assumed, based on regional considerations and relative levels of economic development, and by 2050, reaches up to $150 per metric ton for OECD nations and up to $100 per metric ton for non-OECD nations. As people and nations look for ways to reduce risks of global climate change, they will continue to need practical solutions that do not jeopardize the affordability or reliability of the energy they need. The Corporation continues to monitor the updates to the Nationally Determined Contributions (NDCs) that are submitted by nations that are signatories to the Paris Agreement, as well as other policy developments in light of net-zero ambitions formulated by some nations.
+LABEL: yes
+NOTE: 

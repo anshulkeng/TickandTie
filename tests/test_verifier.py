@@ -74,3 +74,9 @@ def test_each_sentence_needs_its_own_citation():
     assert any("several sentences" in problem for problem in verify(answer, evidence()))
     assert verify("Apple Inc. has about 166,000 employees [P1].", evidence()) == []
     assert verify("The U.S. workforce is about 166,000 employees [P1].", evidence()) == []
+
+def test_a_citation_in_the_middle_of_a_sentence_does_not_split_it():
+    # Found while hand-labelling: "...fiscal 2025 [F1] to $21,893 million..." was cut into two claims.
+    from tickandtie.agents.verifier import split_claims
+    answer = "Net income rose from $19,436 million in fiscal 2025 [F1] to $21,893 million in fiscal 2026 [F2]."
+    assert split_claims(answer) == [answer]
