@@ -51,7 +51,7 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - WMT FY2024: Item 8 is missing the notes to the financial statements.
 - Item 7A only points to Item 7 for JPM, JNJ, PFE, XOM and CAT.
 - Answers can blur what a passage's figure measures, for example "Data Center computing" becoming "Data Center". The figure is verified; its label is not. Measured in Task 5.
-- Citation-style regression: "sentence. [P2] Next sentence" is read as one claim and rejected. It caused most narrative refusals in the Task 5 evaluation.
+- Fixed: the citation-style regression ("sentence. [P2] Next sentence"). The v2 development-set check refused 2 of 20 narrative questions instead of 6.
 - Some extracted text has words glued together ("andAnalysis"). Not measured separately; hybrid search still found 23 of 24 test answers in the top 5.
 
 ## Progress
@@ -60,7 +60,7 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Done: Task 3 (indexing and retrieval). Hybrid search found a correct chunk in the top 5 for 23 of 24 test questions (decision record 0010).
 - Done: Task 4 (core agents). `python -m scripts.ask` answers with verified, cited figures; 11 of 11 end-to-end checks pass, including a planted wrong number that is never shown.
 - Done: Task 5 (evaluation). Results in eval/RESULTS.md, method in decision 0017.
-- Next: fix the citation-style regression (a failing test first), then a v2 run reported as a development-set check; then Task 6 (risk-factor diff).
+- Next: Task 6 (risk-factor diff). Decide hosting for the 7B model before Task 8, because it shapes the website and the deploy.
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

@@ -78,3 +78,18 @@ Sentences without their own citation were judged against all the evidence their 
 - Faithfulness rests on 20 sentences labelled by the project author: wide intervals, and not an independent labeller.
 - Timings come from one Windows laptop running the models locally.
 - The citation-style bug is fixed after this evaluation; any later run on this set is a development-set check, not a fresh result.
+## Development-set check after the citation-style fix (v2)
+
+The traces showed that most narrative refusals came from a citation-style regression. The regression was fixed, with a failing test first, and Tick & Tie was re-run once on the same 81 questions at commit `c88db1e` (`eval/results/system_v2.jsonl`, scores in `eval/scores/code_scores_system_v2.json`). The questions had been seen before the fix, so this is a development-set check, not a fresh result. The v1 numbers above remain the official results.
+
+| | v1 | v2 |
+| --- | --- | --- |
+| Numeric: correct / wrong | 48 / 0 | 48 / 0 |
+| Narrative: answered / refused | 14 / 6 | 18 / 2 |
+| Should refuse: declined | 10 of 10 | 10 of 10 |
+| Tricky: passed | 3 of 3 | 3 of 3 |
+| Median / 90th percentile seconds | 22.0 / 62.2 | 22.5 / 69.4 |
+
+- The four questions the traces blamed on citation style (n05, n06, n07, n12) were answered. The two that remained refused (n13, n17) are the two the traces attributed to real problems: figures not in the cited evidence, and a retrieval miss.
+- Figures, refusals and tricky questions were unchanged, so the fix did not loosen the Verifier.
+- The four newly answered narrative answers were not hand-labelled, so their faithfulness is not measured.
