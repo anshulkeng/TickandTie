@@ -1,0 +1,22 @@
+{
+ "system": {
+  "n": 10,
+  "supported": 8,
+  "share": 0.8,
+  "ci95": [
+   0.49,
+   0.943
+  ],
+  "without_own_citation": 1
+ },
+ "baseline": {
+  "n": 10,
+  "supported": 10,
+  "share": 1.0,
+  "ci95": [
+   0.722,
+   1.0
+  ],
+  "without_own_citation": 6
+ }
+}

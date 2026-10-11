@@ -32,7 +32,7 @@ JPMorganChase is subject to various regulatory capital requirements, including l
 Part I
 
 •changes in the composition of JPMorganChase’s balance sheet or developments that could increase RWA, such as increased market risk, customer delinquencies, client credit rating downgrades or other factors, and
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S02 | How does JPMorgan describe its credit risk management?
@@ -61,8 +61,8 @@ Credit Risk Management monitors and measures credit risk throughout the Firm, an
 •Estimating credit losses, including periodic review and refinement of underlying assumptions, and supporting appropriate credit risk-based capital management
 
 Risk identification and measurement
-LABEL: 
-NOTE: 
+LABEL: no
+NOTE: Overstates the source ("ensure" vs "provided to and discussed with"). Changed from yes to no after a first score had been run, applying the agreed overstatement rule; the system was still hidden.
 
 === S03 | What does Johnson & Johnson say about pressure on drug pricing?
 SENTENCE: The Inflation Reduction Act of 2022 (IRA) has specifically subjected certain of the Company's products to government-established pricing beginning in 2026, and there is potential for additional products to be subject to such pricing in the future.
@@ -81,7 +81,7 @@ EVIDENCE [P5]: Johnson & Johnson 10-K for the period ending 2024-12-29, Item 1 B
 Additionally, we expect continued scrutiny on drug pricing and government price reporting from Congress, agencies, and other bodies at the federal and state levels, which may result in additional regulations or other mechanisms to increase pricing transparency and controls.
 
 There are a number of additional bills pending in Congress and healthcare reform proposals at the state level that would affect drug pricing, including in the Medicare and Medicaid programs. This changing legal landscape has both positive and negative impacts on the U.S. healthcare industry with much remaining uncertain as to how various provisions of federal and state law, and potential modification or repeal of these laws, will ultimately affect the industry. The IRA and any other federal or state legislative change could affect the pricing and market conditions for our products.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S04 | What regulatory capital requirements does JPMorgan discuss?
@@ -107,7 +107,7 @@ JPMorganChase is subject to various regulatory capital requirements, including l
 Part I
 
 •changes in the composition of JPMorganChase’s balance sheet or developments that could increase RWA, such as increased market risk, customer delinquencies, client credit rating downgrades or other factors, and
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S05 | What does Pfizer say about its acquisition of Seagen?
@@ -124,7 +124,7 @@ EVIDENCE [P6]: Pfizer 10-K for the period ending 2024-12-31, Item 8 Financial St
 Seagen’s principal business was the development, manufacture, marketing and distribution of targeted cancer therapeutics, primarily using ADC technology. Seagen’s portfolio includes four approved medicines as well as a pipeline of product candidates. Clinical development programs are ongoing for each of these approved medicines for potential new or expanded indications and for several product candidates. We believe our acquisition of Seagen will strengthen our oncology capabilities by allowing us to combine Seagen’s ADC technology with the resources and scale of the Pfizer enterprise and to advance more potential breakthroughs to patients with cancer.
 
 The following table summarizes the amounts recognized for assets acquired and liabilities assumed as of the acquisition date, as well as adjustments made in 2024 to the amounts initially recorded in 2023 (measurement period adjustments) with a corresponding change to goodwill. The measurement period adjustments did not have a material impact on our earnings in any period. The final allocation of the consideration transferred to the assets acquired and the liabilities assumed has been completed.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S06 | What does Apple say about competition in its markets?
@@ -139,7 +139,7 @@ EVIDENCE [P5]: Apple 10-K for the period ending 2023-09-30, Item 1 Business, fil
 The Company is focused on expanding its market opportunities related to smartphones, personal computers, tablets, wearables and accessories, and services. The Company faces substantial competition in these markets from companies that have significant technical, marketing, distribution and other resources, as well as established hardware, software, and service offerings with large customer bases. In addition, some of the Company’s competitors have broader product lines, lower-priced products and a larger installed base of active devices. Competition has been particularly intense as competitors have aggressively cut prices and lowered product margins. Certain competitors have the resources, experience or cost structures to provide products at little or no profit or even at a loss. The Company’s services compete with business models that provide content to users for free and use illegitimate means to obtain third-party digital content and applications. The Company faces significant competition as competitors imitate the Company’s product features and applications within their products, or collaborate to offer integrated solutions that are more competitive than those they currently offer.
 EVIDENCE [P6]: Apple 10-K for the period ending 2024-09-28, Item 1A Risk Factors, filing 0000320193-24-000123:
 The Company has a minority market share in the global smartphone, personal computer and tablet markets. The Company faces substantial competition in these markets from companies that have significant technical, marketing, distribution and other resources, as well as established hardware, software and digital content supplier relationships. In addition, some of the Company’s competitors have broader product lines, lower-priced products and a larger installed base of active devices. Competition has been particularly intense as competitors have aggressively cut prices and lowered product margins. Certain competitors have the resources, experience or cost structures to provide products at little or no profit or even at a loss. Some of the markets in which the Company competes have from time to time experienced little to no growth or contracted overall.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S07 | How does Walmart describe its eCommerce business?
@@ -163,7 +163,7 @@ Walmart International includes numerous formats divided into two major categorie
 Walmart International's purpose is to help millions of customers and members save money and live better every day by leveraging our global ecosystem and deep local expertise to provide access to affordable products and services. In addition, we share what we learn in our markets to help the enterprise innovate and grow even faster. We are deliberate about where and how we choose to operate to best enable long-term, sustainable and profitable growth.
 
 7
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S08 | What does Johnson & Johnson say about pressure on drug pricing?
@@ -185,7 +185,7 @@ The Company may be further impacted by the imposition of tariffs, trade protecti
 The Company faces various worldwide healthcare changes that may continue to result in pricing pressures that include healthcare cost containment and government legislation relating to sales, promotions, pricing and reimbursement of healthcare products.
 
 Changes in the behavior and spending patterns of purchasers of healthcare products and services, including delaying medical procedures, rationing prescription medications, reducing the frequency of physician visits and foregoing healthcare insurance coverage may continue to impact the Company’s businesses.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S09 | How does Verizon describe competition in its wireless business?
@@ -207,7 +207,7 @@ Pricing plays an increasingly important role in the wireless competitive landsca
 For further details on competitive environment and trends, refer to "Business — Competition and Related Trends" in Part I, Item 1 and "Risk Factors — Economic and Strategic Risks — We face significant competition that may negatively affect our operating results" in Part I, Item 1A of this Annual Report on Form 10-K.
 
 Connection Trends
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S10 | How does Costco describe the expansion of its warehouses?
@@ -216,7 +216,7 @@ EVIDENCE [P2]: Costco 10-K for the period ending 2026-08-30, Item 1 Business, fi
 ship these goods to warehouses. This process creates freight volume and handling efficiencies, lowering costs associated with traditional multiple-step distribution channels. Our e-commerce operations ship merchandise through our depots and logistics operations, as well as through drop-ship and other delivery arrangements with our suppliers.
 
 Our average warehouse space is approximately 148,000 square feet, with newer units being slightly larger. Floor plans are designed for efficiency in the use of selling space, the handling of merchandise, and the control of inventory. Because shoppers are attracted principally by the quality of merchandise and low prices, our warehouses are not elaborate. By strictly controlling the entrances and exits and using a membership format, we believe our inventory losses (shrinkage) are well below those of typical retail operations.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S11 | How does Microsoft describe its investment in datacenters and AI infrastructure?
@@ -227,7 +227,7 @@ We have a global operations service center covering the Americas, Asia Pacific, 
 In addition to our operations center, we also operate datacenters throughout each of these regions. We continue to align our datacenter locations and server capacity to meet the evolving needs of our customers, particularly given the growing demand for AI services. Our datacenters depend on the availability of permitted and buildable land, predictable energy, networking supplies, and servers, including graphics processing units and other components.
 
 We engage third-party manufacturers to produce our devices and have implemented measures to enhance supply chain efficiency and resilience, including the ability to relocate production geographically.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S12 | What does Pfizer say about its acquisition of Seagen?
@@ -236,14 +236,14 @@ EVIDENCE [P1]: Pfizer 10-K for the period ending 2025-12-31, Item 8 Financial St
 Seagen––On December 14, 2023 (the acquisition date), we acquired Seagen, a global biotechnology company that discovers, develops and commercializes transformative cancer medicines, for $229 per share in cash. The total fair value of the consideration transferred was $44.2 billion ($43.4 billion, net of cash acquired). In addition, in connection with the acquisition, $476 million in post-closing compensation expense for Seagen employee incentive awards was recorded in Restructuring charges and certain acquisition-related costs (see Note 3).
 
 Seagen’s principal business was the development, manufacture, marketing and distribution of targeted cancer therapeutics, primarily using ADC technology. Seagen’s portfolio includes four approved medicines as well as a pipeline of product candidates. We believe our acquisition of Seagen will strengthen our oncology capabilities by allowing us to combine Seagen’s ADC technology with the resources and scale of the Pfizer enterprise and to advance more potential breakthroughs to patients with cancer.
-LABEL: 
-NOTE: 
+LABEL: no
+NOTE: not really sure
 
 === S13 | What does Johnson & Johnson say about pressure on drug pricing?
 SENTENCE: Johnson & Johnson notes that third-party payors, including government healthcare programs, private insurance plans, and managed care organizations, are applying downward pressure on the prices at which their products will be reimbursed as part of efforts to control healthcare costs [P1].
 EVIDENCE [P1]: Johnson & Johnson 10-K for the period ending 2025-12-28, Item 1A Risk Factors, filing 0000200406-26-000016:
 Sales of the Company’s Innovative Medicine and MedTech products are significantly affected by reimbursements by third-party payors such as government healthcare programs, private insurance plans and managed care organizations. As part of various efforts to contain healthcare costs, these payors are putting downward pressure on prices at which products will be reimbursed. In the U.S., increased purchasing power of entities that negotiate on behalf of Medicare, Medicaid, and private sector beneficiaries, in part due to continued consolidation among healthcare providers, could result in further pricing pressures. In addition, recent legislation and ongoing political scrutiny on pricing, coverage and reimbursement could result in additional pricing pressures. Specifically, the Inflation Reduction Act of 2022 (IRA) has changed Medicare Part D benefit design and has subjected certain of the Company's products to government-established pricing beginning in 2026 and may subject additional products in the future. Failure to adhere to the government's interpretations of the law pending ongoing litigation may expose the Company to penalties. In addition, change to Medicare Part D could have a negative impact on U.S. Innovative Medicine sales. Further, increased third-party utilization of the 340B Federal Drug Discount Program from expanded interpretations of the statute and program abuse may have a negative impact on the Company's financial performance.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S14 | How does Pfizer describe the loss of exclusivity on its products?
@@ -260,7 +260,7 @@ EVIDENCE [P5]: Pfizer 10-K for the period ending 2024-12-31, Item 1 Business, fi
 Loss of Intellectual Property Rights. The loss, expiration or invalidation of intellectual property rights, patent litigation settlements and judgments and the expiration of co-promotion and licensing rights can have a material adverse effect on our revenues. Once patent protection has expired or has been lost prior to the expiration date as a result of a legal challenge, we typically lose market exclusivity on these products, and generic and biosimilar pharmaceutical manufacturers generally produce identical or highly similar products and sell them for a lower price. The date at which generic or biosimilar competition commences may be different from the date that the patent or regulatory exclusivity expires. However, when generic or biosimilar competition does commence, the resulting price competition can substantially decrease our revenues for the impacted products, often in a very short period of time. Also, if one of our product-related patents is found to be invalid by judicial, court, regulatory or administrative proceedings, generic or biosimilar products could be introduced, resulting in the erosion of sales of our existing products. Additionally, we could be subject to claims that our intellectual property rights infringe third party patents.
 EVIDENCE [P6]: Pfizer 10-K for the period ending 2025-12-31, Item 1 Business, filing 0000078003-26-000026:
 Loss of Intellectual Property Rights. The loss, expiration or invalidation of intellectual property rights, patent litigation settlements and judgments and the expiration of co-promotion and licensing rights can have a material adverse effect on our revenues. Once patent protection has expired or has been lost prior to the expiration date as a result of a legal challenge, we typically lose market exclusivity on these products, and generic and biosimilar pharmaceutical manufacturers generally produce identical or highly similar products and sell them for a lower price. The date at which generic or biosimilar competition commences may be different from the date that the patent or regulatory exclusivity expires. However, when generic or biosimilar competition does commence, the resulting price competition can substantially decrease our revenues for the impacted products, often in a very short period of time. Also, if one of our product-related patents is found to be invalid by judicial, court, regulatory or administrative proceedings, generic or biosimilar products could be introduced, resulting in the erosion of sales of our existing products. Additionally, we could be subject to claims that our intellectual property rights infringe third party patents.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S15 | How does ExxonMobil describe its acquisition of Pioneer Natural Resources?
@@ -292,7 +292,7 @@ On May 3, 2024, the Corporation acquired Pioneer Natural Resources Company (Pion
 In respect of the Pioneer acquisition, the most significant amount of judgment involved the estimated fair values of property, plant and equipment related to crude oil and natural gas properties, for which we used discounted cash flow models. Inputs and assumptions used in discounted cash flow models include estimates of future production volumes, commodity prices consistent with the average of third-party industry experts, drilling and development costs, and risk-adjusted discount rates.
 
 The assumptions and inputs incorporated within the fair value estimates are subject to considerable management judgement and are based on industry, market, and economic conditions prevalent at the time of the acquisition. Actual results may differ from the projected results used to determine fair value.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S16 | What does Caterpillar say about dealer inventory?
@@ -301,14 +301,14 @@ EVIDENCE [P1]: Caterpillar 10-K for the period ending 2025-12-31, Item 7 Managem
 Total dealer inventory increased about $900 million during 2025, compared to an increase of about $400 million during 2024. Machine dealer inventory decreased about $500 million during 2025, compared to a decrease of about $700 million during 2024. Dealers are independent, and the reasons for changes in their inventory levels vary, including their expectations of future demand and product delivery times. Dealers’ demand expectations take into account seasonal changes, macroeconomic conditions, machine rental rates and other factors. Delivery times can vary based on availability of product from Caterpillar factories and product distribution centers. We expect machine dealer inventory to increase in 2026 and offset the $500 million decrease in 2025.
 
 31
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S17 | How does Pfizer describe the loss of exclusivity on its products?
 SENTENCE: This loss typically results from the expiration or invalidation of intellectual property rights, leading to generic and biosimilar competition that can substantially decrease revenues [P2].
 EVIDENCE [P2]: Pfizer 10-K for the period ending 2025-12-31, Item 1 Business, filing 0000078003-26-000026:
 Loss of Intellectual Property Rights. The loss, expiration or invalidation of intellectual property rights, patent litigation settlements and judgments and the expiration of co-promotion and licensing rights can have a material adverse effect on our revenues. Once patent protection has expired or has been lost prior to the expiration date as a result of a legal challenge, we typically lose market exclusivity on these products, and generic and biosimilar pharmaceutical manufacturers generally produce identical or highly similar products and sell them for a lower price. The date at which generic or biosimilar competition commences may be different from the date that the patent or regulatory exclusivity expires. However, when generic or biosimilar competition does commence, the resulting price competition can substantially decrease our revenues for the impacted products, often in a very short period of time. Also, if one of our product-related patents is found to be invalid by judicial, court, regulatory or administrative proceedings, generic or biosimilar products could be introduced, resulting in the erosion of sales of our existing products. Additionally, we could be subject to claims that our intellectual property rights infringe third party patents.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S18 | What cybersecurity risks does Microsoft describe?
@@ -317,7 +317,7 @@ EVIDENCE [P5]: Microsoft 10-K for the period ending 2024-06-30, Item 1A Risk Fac
 Cyberattacks and security vulnerabilities could lead to reduced revenue, increased costs, liability claims, or harm to our reputation or competitive position.
 
 Security of our information technology
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S19 | How does Microsoft describe its investment in datacenters and AI infrastructure?
@@ -326,14 +326,14 @@ EVIDENCE [P2]: Microsoft 10-K for the period ending 2026-06-30, Item 1 Business,
 Azure is a comprehensive set of cloud services that offer developers, IT professionals, and enterprises freedom to build, deploy, and manage applications on any platform or device. Customers can use Azure through our global network of datacenters for computing, networking, storage, mobile and web application services, AI, and Internet of Things. Azure enables customers to devote more resources to development and use of applications that benefit their organizations, rather than managing on-premises hardware and software. Azure revenue is mainly affected by infrastructure-as-a-service and platform-as-a-service consumption-based services.
 
 Azure AI offerings provide a competitive advantage as companies seek ways to optimize and scale their business with AI. We offer supercomputing power for AI at scale to run large workloads, complemented by our rapidly expanding portfolio of AI cloud services (including the latest models) and hardware, which includes custom-built silicon and strong partnerships with chip manufacturers. Azure AI Foundry is a unified platform for developers to design, customize, and manage AI applications and agents.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S20 | How does Apple describe the risks of its international operations?
 SENTENCE: Industrial accidents at suppliers and contract manufacturers, as well as public health issues like pandemics, can disrupt operations and harm the company's reputation [P3].
 EVIDENCE [P3]: Apple 10-K for the period ending 2025-09-27, Item 1A Risk Factors, filing 0000320193-25-000079:
 The Company’s operations are also subject to the risks of industrial accidents at its suppliers and contract manufacturers. While the Company’s suppliers are required to maintain safe working environments and operations, an industrial accident could occur and could result in serious injuries or loss of life, disruption to the Company’s business, and harm to the Company’s reputation. Major public health issues, including pandemics such as the COVID-19 pandemic, have adversely affected, and could in the future materially adversely affect, the Company due to their impact on the global economy and demand for consumer products; the imposition of protective public safety measures, such as stringent employee travel restrictions and limitations on freight services and the movement of products between regions; and disruptions in the Company’s operations, supply chain and sales and distribution channels, resulting in interruptions to the supply of current products and offering of existing services, and delays in production ramps of new products and development of new services.
-LABEL: 
+LABEL: yes
 NOTE: 
 
 === S21 | How does Apple describe the risks of its international operations?
