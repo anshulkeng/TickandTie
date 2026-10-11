@@ -65,6 +65,19 @@ EXPLAINS = re.compile(
     re.IGNORECASE,
 )
 
+# Tick & Tie reports what companies filed; it never says whether to trade their shares. Narrow on
+# purpose, so questions such as "How much did Apple invest in R&D?" are still answered.
+ADVICE = re.compile(
+    r"\bshould\s+(?:i|we|you|one)\s+(?:buy|sell|hold|short|invest)\b"
+    r"|\b(?:good|bad|smart|safe)\s+(?:investment|stock|buy)\b"
+    r"|\bworth\s+(?:buying|investing|owning)\b"
+    r"|\b(?:buy|sell)\s+or\s+(?:sell|hold|buy)\b"
+    r"|\bprice\s+target\b",
+    re.IGNORECASE,
+)
+ADVICE_REFUSAL = ("I don't give investment advice. I can tell you what a company reported, such as its revenue "
+                  "or the risks it describes, but not whether to buy, sell or hold its shares.")
+
 ROUTER_PROMPT = """You route questions about US companies' annual reports (Form 10-K).
 Decide two things:
 1. needs_text: true if answering needs passages of report text (reasons, explanations, risks, strategy, descriptions); false if reported figures alone answer it.
@@ -141,6 +154,8 @@ def ask_model(question):
 
 def route(question, decide=None):
     decide = decide or ask_model
+    if ADVICE.search(question):
+        return Plan(question, [], [], [], False, False, [], refusal=ADVICE_REFUSAL)
     tickers = find_companies(question)
     years = find_years(question)
     metrics = find_metrics(question)
