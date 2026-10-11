@@ -14,3 +14,5 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0008](0008-data-not-committed.md) | Data is rebuilt, never committed |
 | [0009](0009-chunking.md) | Paragraph-aware chunks of about 1,200 characters, pointers skipped |
 | [0010](0010-hybrid-search.md) | Hybrid search with reciprocal rank fusion |
+| [0011](0011-fiscal-years-from-filings.md) | Fiscal years come from the filings |
+| [0012](0012-metric-concept-rules.md) | Everyday metrics map to SEC concepts by written rules |
