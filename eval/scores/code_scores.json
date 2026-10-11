@@ -1,0 +1,48 @@
+{
+ "system": {
+  "numeric": {
+   "correct": 48
+  },
+  "narrative": {
+   "answered": 14,
+   "phrase_in_cited_evidence": 14,
+   "refused": 6
+  },
+  "refuse": {
+   "acknowledged": 10
+  },
+  "tricky": {
+   "passed": 3
+  },
+  "refused_answerable": 6,
+  "rewrites": 14,
+  "partial_answers": 2,
+  "seconds_median": 22.0,
+  "seconds_p90": 62.2
+ },
+ "baseline": {
+  "numeric": {
+   "correct": 28,
+   "no_figure": 6,
+   "wrong": 12,
+   "close": 2
+  },
+  "narrative": {
+   "answered": 20,
+   "phrase_in_cited_evidence": 20
+  },
+  "refuse": {
+   "acknowledged": 8,
+   "answered_anyway": 2
+  },
+  "tricky": {
+   "failed": 2,
+   "passed": 1
+  },
+  "refused_answerable": 0,
+  "rewrites": 0,
+  "partial_answers": 0,
+  "seconds_median": 31.2,
+  "seconds_p90": 41.8
+ }
+}

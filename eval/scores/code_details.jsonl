@@ -1,0 +1,162 @@
+{"id": "q01", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q02", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q03", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q04", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q05", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q06", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q07", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q08", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q09", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q10", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q11", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q12", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q13", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q14", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q15", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q16", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q17", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q18", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q19", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q20", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q21", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q22", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q23", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q24", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q25", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q26", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q27", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q28", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q29", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q30", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q31", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q32", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q33", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q34", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q35", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q36", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q37", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q38", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q39", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q40", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q41", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q42", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q43", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q44", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q45", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q46", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q47", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "q48", "mode": "system", "kind": "numeric", "outcome": "correct"}
+{"id": "n01", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n02", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n03", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n04", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n05", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n06", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n07", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n08", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n09", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n10", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n11", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n12", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n13", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n14", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n15", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n16", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n17", "mode": "system", "kind": "narrative", "answered": false, "phrase_hit": false}
+{"id": "n18", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n19", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n20", "mode": "system", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "u01", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u02", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u03", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u04", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u05", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u06", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u07", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u08", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u09", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "u10", "mode": "system", "kind": "refuse", "acknowledged": true}
+{"id": "t01", "mode": "system", "kind": "tricky", "passed": true}
+{"id": "t02", "mode": "system", "kind": "tricky", "passed": true}
+{"id": "t03", "mode": "system", "kind": "tricky", "passed": true}
+{"id": "q01", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q02", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q03", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q04", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q05", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q06", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q07", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q08", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q09", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q10", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q11", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q12", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q13", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q14", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q15", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q16", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q17", "mode": "baseline", "kind": "numeric", "outcome": "close"}
+{"id": "q18", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q19", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q20", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q21", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q22", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q23", "mode": "baseline", "kind": "numeric", "outcome": "close"}
+{"id": "q24", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q25", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q26", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q27", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q28", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q29", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q30", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q31", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q32", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q33", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q34", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q35", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q36", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q37", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q38", "mode": "baseline", "kind": "numeric", "outcome": "wrong"}
+{"id": "q39", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q40", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q41", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q42", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q43", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q44", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q45", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q46", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "q47", "mode": "baseline", "kind": "numeric", "outcome": "no_figure"}
+{"id": "q48", "mode": "baseline", "kind": "numeric", "outcome": "correct"}
+{"id": "n01", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n02", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n03", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n04", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n05", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n06", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n07", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n08", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n09", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n10", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n11", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n12", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n13", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n14", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n15", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n16", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n17", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n18", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n19", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "n20", "mode": "baseline", "kind": "narrative", "answered": true, "phrase_hit": true}
+{"id": "u01", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u02", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u03", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u04", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u05", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u06", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u07", "mode": "baseline", "kind": "refuse", "acknowledged": false}
+{"id": "u08", "mode": "baseline", "kind": "refuse", "acknowledged": false}
+{"id": "u09", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "u10", "mode": "baseline", "kind": "refuse", "acknowledged": true}
+{"id": "t01", "mode": "baseline", "kind": "tricky", "passed": false}
+{"id": "t02", "mode": "baseline", "kind": "tricky", "passed": false}
+{"id": "t03", "mode": "baseline", "kind": "tricky", "passed": true}
