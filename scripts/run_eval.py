@@ -79,11 +79,12 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("mode", choices=["system", "baseline"])
     parser.add_argument("--limit", type=int)
+    parser.add_argument("--name", help="results file name, for example system_v2; defaults to the mode")
     args = parser.parse_args()
 
     questions = [json.loads(line) for line in QUESTIONS.read_text(encoding="utf-8").splitlines() if line.strip()]
     RESULTS.mkdir(parents=True, exist_ok=True)
-    out = RESULTS / f"{args.mode}.jsonl"
+    out = RESULTS / f"{args.name or args.mode}.jsonl"
     done = set()
     if out.exists():
         done = {json.loads(line)["id"] for line in out.read_text(encoding="utf-8").splitlines() if line.strip()}
