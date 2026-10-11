@@ -7,7 +7,7 @@ import re
 TOLERANCE = 0.005
 NOT_COVERED = "Not covered:"
 CITATION = re.compile(r"\[([FP]\d+(?:\s*,\s*[FP]\d+)*)\]")
-CLAIM_END = re.compile(r"(?<=\])[.!?]?\s+")
+CLAIM_END = re.compile(r"(?<=\])[.!?]\s+")
 FIGURE = re.compile(r"(?<![\w.\-/])(\$)?(\d[\d,]*(?:\.\d+)?)(\s?%)?")
 INNER_BREAK = re.compile(r"([\w%)]+)\.\s+(?=[A-Z])")
 ABBREVIATIONS = {"inc", "corp", "co", "ltd", "llc", "plc", "no", "vs", "etc", "mr", "ms", "dr", "st"}
@@ -25,7 +25,7 @@ NOT_FIGURES = [
 
 
 def split_claims(answer):
-    """A claim runs up to and including its citation, so abbreviations like "Inc." never split one."""
+    """A claim is a sentence: it ends at a citation followed by a full stop, so neither abbreviations like "Inc." nor a citation in mid-sentence split one."""
     return [claim.strip() for claim in CLAIM_END.split(answer.strip()) if claim.strip()]
 
 
