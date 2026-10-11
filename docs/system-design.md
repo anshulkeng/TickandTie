@@ -28,7 +28,7 @@ There is no tenancy. Everyone sees the same read-only corpus.
 - An evaluation harness runs the full question set with one command.
 
 ## Non-functional requirements
-- **Correctness over speed**: no number reaches the user unless it matches XBRL within 0.5%.
+- **Correctness over speed**: no number reaches the user unless it matches a cited XBRL fact within 0.5% or appears exactly in the filing passage its sentence cites (decision 0014).
 - **Cost**: free tooling only. The custom domain is the one planned spend.
 - **Privacy**: no accounts. Questions and traces are logged for debugging without personal data.
 - **Reproducibility**: pinned dependencies, temperature 0, fixed seeds, and all data rebuildable from the SEC.
