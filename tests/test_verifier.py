@@ -80,3 +80,8 @@ def test_a_citation_in_the_middle_of_a_sentence_does_not_split_it():
     from tickandtie.agents.verifier import split_claims
     answer = "Net income rose from $19,436 million in fiscal 2025 [F1] to $21,893 million in fiscal 2026 [F2]."
     assert split_claims(answer) == [answer]
+
+def test_a_citation_written_after_the_full_stop_still_ends_the_sentence():
+    # Found by the Task 5 evaluation: "...concentration. [P2] This..." was read as one claim across two sentences.
+    answer = "Apple has about 166,000 employees. [P1] Revenue was $416,161 million. [F1]"
+    assert verify(answer, evidence()) == []

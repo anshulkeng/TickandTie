@@ -23,5 +23,6 @@ The Verifier is plain code.
 - The second live run also showed the Writer putting one citation after three sentences. The first version of the check treated everything up to a citation as one claim and let that through; it now requires a citation on every sentence, and a test reproduces the case.
 - A figure taken from filing text is checked for being in the filing, not against XBRL. It is what the filing says.
 - Rounding within 0.5% is accepted.
+- The Task 5 evaluation found that tightening the splitter made a common style fail: a citation written after the full stop ("...concentration. [P2] This..."). Such citations are now moved before the full stop before splitting; a test reproduces the case. Known edge: a citation directly after an abbreviation ("Inc. [P1] continues") now ends the claim there.
 - Hand-labelling for the Task 5 judge found the claim splitter cutting a sentence at a mid-sentence citation ("...fiscal 2025 [F1] to $21,893 million..."). Claims now end only at a citation followed by a full stop, and a test reproduces the case.
 - The Verifier cannot judge whether a sentence's meaning matches its passage. Faithfulness is measured separately in Task 5.
