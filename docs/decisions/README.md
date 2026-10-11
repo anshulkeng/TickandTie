@@ -17,3 +17,5 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0011](0011-fiscal-years-from-filings.md) | Fiscal years come from the filings |
 | [0012](0012-metric-concept-rules.md) | Everyday metrics map to SEC concepts by written rules |
 | [0013](0013-router-rules-first.md) | The Router uses rules first and the model for one decision |
+| [0014](0014-plain-code-verifier.md) | A plain-code Verifier checks every answer |
+| [0015](0015-filing-text-is-data.md) | Filing text is data, never instructions |
