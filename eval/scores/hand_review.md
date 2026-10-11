@@ -29,3 +29,14 @@ Question wording (1):
 ## Costs on the Tick & Tie side
 
 - 6 of 20 narrative questions were refused (n05, n06, n07, n12, n13, n17); reasons to be read from their traces.
+## Why Tick & Tie refused 7 answerable questions (read from traces after scoring)
+
+Full drafts and Verifier complaints are in `refusal_reasons.txt`. Of 18 complaints, 11 were "several sentences under one citation".
+
+- n06, n07, n12: citation style only. The Writer put citations after the full stop ("...customer concentration. [P2] This..."). The claim splitter, tightened during hand-labelling so that a mid-sentence citation would not split a sentence, now reads this style as one claim spanning two sentences and rejects it. The unit tests did not cover this style; the evaluation exposed it. This is a regression from our own fix.
+- n05: the same citation style, plus a draft that said the details were "not provided" without a citation.
+- n13: figures (145 and 986) not in the evidence cited after them. Real catches.
+- n17: retrieval miss. The passages retrieved held no Pioneer details, and the draft was an uncited non-answer.
+- t01: a real error caught. Distracted by the planted "$999 billion", the Writer called the fiscal 2025 figure "fiscal 2024" and said fiscal 2025 was not covered. The Verifier blocked it because a "Not covered" sentence stated a figure.
+
+So at least 3, and probably 4, of the 6 narrative refusals come from a fixable formatting bug rather than from the Verifier catching real problems. The frozen results stand as measured. A fix, if made, will be reported separately as checked on this same development set, not as a fresh result.

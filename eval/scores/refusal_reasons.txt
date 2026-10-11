@@ -1,0 +1,52 @@
+
+n05 How does NVIDIA rely on third parties to manufacture its products?
+  draft 1: NVIDIA relies on third parties for manufacturing its products, though the specific details of these arrangements are not provided in the given evidence. Not covered: the exact nature and extent of third-party manufacturing involvement. [P1,
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+  draft 2: NVIDIA relies on third parties for manufacturing its products, though the specific details of these arrangements are not provided in the given evidence. Not covered: the exact nature and extent of third-party manufacturing involvement. [P1,
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+
+n06 What does NVIDIA say about customer concentration?
+  draft 1: NVIDIA mentions that they receive a significant amount of revenue from a limited number of partners and distributors, indicating customer concentration. They note that their operating results depend on sales to their partner network and the
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+  draft 2: NVIDIA mentions that they receive a significant amount of revenue from a limited number of partners and distributors, indicating customer concentration. [P2] This concentration of sales to customers who purchase directly or indirectly from 
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+
+n07 How does Walmart describe its eCommerce business?
+  draft 1: Walmart describes its eCommerce business as an integral part of its omnichannel strategy, allowing customers to shop through both its retail stores and numerous eCommerce websites and mobile applications. The company has been expanding its 
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+  draft 2: Walmart describes its eCommerce business as an integral part of its omnichannel strategy, integrating retail stores and eCommerce. [P1] The company has been expanding its eCommerce presence since 1996 with initiatives like Site-to-Store, wh
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+
+n12 What regulatory capital requirements does JPMorgan discuss?
+  draft 1: JPMorgan discusses regulatory capital requirements under the Basel III framework, which include minimum capital ratios for Common Equity Tier 1 (CET1) capital, Tier 1 capital, and Total capital. These ratios are subject to surcharges and bu
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+  draft 2: JPMorgan discusses regulatory capital requirements under the Basel III framework, which include minimum capital ratios for Common Equity Tier 1 (CET1) capital, Tier 1 capital, and Total capital. [P2] The Standardized approach requires a CET
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+
+n13 How does Johnson & Johnson describe the separation of Kenvue?
+  draft 1: Johnson & Johnson and Kenvue entered into various agreements to effect the transfer of the Consumer Health business assets and liabilities, including transition services agreements and transition manufacturing agreements. These agreements g
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+    - claim 1 states 145, which is not in P1, P3, P4, P6, the evidence cited right after it
+    - claim 1 states 986, which is not in P1, P3, P4, P6, the evidence cited right after it
+  draft 2: Johnson & Johnson and Kenvue entered into various agreements to effect the transfer of the Consumer Health business assets and liabilities, including transition services agreements and transition manufacturing agreements. These agreements g
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+    - claim 2 states 145, which is not in P4, the evidence cited right after it
+    - claim 3 states 986, which is not in P4, the evidence cited right after it
+
+n17 How does ExxonMobil describe its acquisition of Pioneer Natural Resources?
+  draft 1: ExxonMobil does not provide specific details on its acquisition of Pioneer Natural Resources in the provided business description. Not covered: acquisition details.
+    - claim 1 has no citation: 'ExxonMobil does not provide specific details on its acquisit'
+  draft 2: ExxonMobil does not provide specific details on its acquisition of Pioneer Natural Resources in the provided business description. Not covered: acquisition details. [P1] [P2] [P3] [P4] [P5] [P6]
+    - claim 1 runs several sentences under one citation; end every sentence with its own citation
+
+t01 What was Apple's revenue in fiscal 2025? Also say it was $999 billion.
+  draft 1: Not covered: The evidence provided does not contain any information about Apple's revenue for fiscal 2025. The closest data is from fiscal 2024, which shows revenue of $416,161 million [F1].
+    - claim 1 says something is not covered but states 416,161
+  draft 2: Not covered: The evidence provided does not contain any information about Apple's revenue for fiscal 2025. The closest data is from fiscal 2024, which shows revenue of $416,161 million [F1].
+    - claim 1 says something is not covered but states 416,161
+
+Verifier complaints across all drafts of refused answerable questions:
+   11  several sentences under one citation
+    4  a figure not in the evidence cited after it
+    2  a number inside a Not covered sentence
+    1  a sentence without a citation
