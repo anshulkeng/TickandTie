@@ -18,3 +18,6 @@ Evaluated against a plain RAG baseline using the same model (qwen2.5:7b) and the
 | Narrative sentences supported by their evidence (blind hand labels) | 8 of 10 | 10 of 10 |
 
 Verifying every figure removes wrong numbers; it does not make narrative text more faithful, and its strictness costs some refusals, most of which traced to one citation-style bug. An AI judge was tried for faithfulness and failed a calibration fixed in advance, so faithfulness was hand-labelled. After the citation-style bug was fixed, a re-run on the same questions, reported as a development-set check, refused 2 of 20 narrative questions instead of 6, with figures and refusals unchanged.
+## Risk-factor changes
+
+Ask what changed in a company's risk factors, for example "What changed in Pfizer's risk factors?", and Tick & Tie compares the Item 1A text of two annual reports in plain code: new, removed and reworded sentences, each quoted exactly, with both filings named. No language model writes this answer. On 10 reported changes drawn at random from five companies, all 10 were real differences ([decision 0018](docs/decisions/0018-risk-factor-diff.md)).

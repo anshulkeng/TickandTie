@@ -65,6 +65,16 @@ EXPLAINS = re.compile(
     re.IGNORECASE,
 )
 
+# Questions about how a company's risk factors changed go to the plain-code diff (Task 6). Narrow on
+# purpose: "changed" or "compare" must come with "risk factors", so "climate change risks" stays a normal question.
+RISK_DIFF = re.compile(
+    r"\bwhat\b[^?]*\bchanged\b[^?]*\brisk"
+    r"|\b(?:chang\w*|differ\w*|compar\w*)\b[^?]*\brisk factors?\b"
+    r"|\brisk factors?\b[^?]*\b(?:chang\w*|differ\w*|compar\w*)\b"
+    r"|\b(?:new|added|removed|dropped)\b[^?]*\brisks?\b"
+    r"|\brisks?\b[^?]*\b(?:added|removed|dropped)\b",
+    re.IGNORECASE,
+)
 # Tick & Tie reports what companies filed; it never says whether to trade their shares. Narrow on
 # purpose, so questions such as "How much did Apple invest in R&D?" are still answered.
 ADVICE = re.compile(
@@ -106,6 +116,7 @@ class Plan:
     sections: list
     refusal: str = None
     notes: list = field(default_factory=list)
+    task: str = "answer"  # or "risk_diff"
 
 
 def find_companies(question):
@@ -163,6 +174,11 @@ def route(question, decide=None):
         covered = ", ".join(config.COMPANY_NAMES[ticker] for ticker in config.COMPANIES)
         return Plan(question, [], years, metrics, False, False, [],
                     refusal=f"I can only answer questions about these companies: {covered}.")
+    if RISK_DIFF.search(question):
+        if len(tickers) != 1:
+            return Plan(question, tickers, years, metrics, False, False, [],
+                        refusal="I compare risk factors for one company at a time. Please ask about one company.")
+        return Plan(question, tickers, years, [], False, False, ["Item 1A"], task="risk_diff")
     decision, error = decide(question)
     notes = [] if decision else [f"routing model failed ({error}); used the default sections"]
     needs_text = (not metrics) or bool(EXPLAINS.search(question)) or bool(decision and decision.needs_text)

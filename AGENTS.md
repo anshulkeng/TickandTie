@@ -44,6 +44,7 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Ask a question: python -m scripts.ask "What was Apple's revenue in fiscal 2025?"
 - End-to-end check: python -m scripts.check_pipeline (needs Ollama running)
 - Read the latest trace for a question: python -m scripts.show_trace <words from the question>
+- Risk-factor diff for one or more companies: python -m scripts.try_risk_diff PFE MSFT
 - Rebuild data, in order: python -m scripts.fetch_metadata, python -m scripts.ingest_filings, python -m scripts.load_facts
 
 ## Known gaps
@@ -60,7 +61,8 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Done: Task 3 (indexing and retrieval). Hybrid search found a correct chunk in the top 5 for 23 of 24 test questions (decision record 0010).
 - Done: Task 4 (core agents). `python -m scripts.ask` answers with verified, cited figures; 11 of 11 end-to-end checks pass, including a planted wrong number that is never shown.
 - Done: Task 5 (evaluation). Results in eval/RESULTS.md, method in decision 0017.
-- Next: Task 6 (risk-factor diff). Decide hosting for the 7B model before Task 8, because it shapes the website and the deploy.
+- Done: Task 6 (risk-factor diff). Ask, for example, "What changed in Pfizer's risk factors?". Plain code, exact quotes, decision 0018; 10 of 10 checked changes real.
+- Next: decide hosting for the 7B model (it shapes Tasks 8 and 9), then Task 7 (API).
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

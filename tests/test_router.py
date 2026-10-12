@@ -71,3 +71,20 @@ def test_questions_about_a_company_investing_are_not_mistaken_for_advice():
     assert plan.refusal is None and plan.metrics == ["rnd"]
     plan = route("What does Verizon say about investment in its network?", decide=says(True, ["Item 7"]))
     assert plan.refusal is None
+
+def test_risk_factor_change_questions_go_to_the_diff_without_a_model():
+    plan = route("What changed in Pfizer's risk factors?", decide=never)
+    assert plan.task == "risk_diff" and plan.tickers == ["PFE"] and plan.refusal is None
+    plan = route("What new risks did Microsoft add in fiscal 2026?", decide=never)
+    assert plan.task == "risk_diff" and plan.fiscal_years == [2026]
+
+
+def test_ordinary_risk_questions_are_not_mistaken_for_a_diff():
+    for question in ["What risks does Pfizer describe?", "How does Exxon describe climate change risks?",
+                     "How does JPMorgan manage interest rate risk?"]:
+        assert route(question, decide=says(True, ["Item 1A"])).task == "answer", question
+
+
+def test_a_risk_diff_needs_exactly_one_company():
+    plan = route("Compare the risk factors of Apple and Microsoft", decide=never)
+    assert plan.refusal and "one company" in plan.refusal

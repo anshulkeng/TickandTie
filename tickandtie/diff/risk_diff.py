@@ -179,10 +179,10 @@ def diff_texts(old_text, new_text):
     return result
 
 
-def filings(ticker):
+def filings(ticker, root=FILINGS):
     """The ticker's filings that hold a real Item 1A, oldest first: [(period_end, accession, text)]."""
     found = []
-    for path in sorted((FILINGS / ticker).glob("*.json")):
+    for path in sorted((root / ticker).glob("*.json")):
         data = json.loads(path.read_text(encoding="utf-8"))
         text = data["items"].get("Item 1A", "")
         if len(text) >= MIN_ITEM_CHARS:
@@ -190,9 +190,9 @@ def filings(ticker):
     return found
 
 
-def compare(ticker, older=None, newer=None):
+def compare(ticker, older=None, newer=None, root=FILINGS):
     """Diff two years of Item 1A, by default the latest against the one before. None if either is missing."""
-    available = filings(ticker)
+    available = filings(ticker, root)
     by_period = {period: (accession, text) for period, accession, text in available}
     if newer is None and available:
         newer = available[-1][0]
