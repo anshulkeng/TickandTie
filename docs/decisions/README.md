@@ -21,3 +21,4 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0015](0015-filing-text-is-data.md) | Filing text is data, never instructions |
 | [0016](0016-partial-answers-and-pipeline.md) | Keep verified sentences, remove failed ones, and say so |
 | [0017](0017-evaluation-method.md) | How Tick & Tie is evaluated |
+| [0018](0018-risk-factor-diff.md) | The risk-factor diff is plain code with exact quotes |
