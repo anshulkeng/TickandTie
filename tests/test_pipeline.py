@@ -110,3 +110,34 @@ def test_answers_list_the_periods_of_the_figures_they_cite(tmp_path):
                  deps(tmp_path, decide=no_text, chat=replies("Apple's revenue rose $25,126 million, or 6.4% [F3].")))
     assert result.periods == ["Apple fiscal 2024: 2023-10-01 to 2024-09-28",
                               "Apple fiscal 2025: 2024-09-29 to 2025-09-27"]
+
+RISKS = [f"Risk number {i} describes a distinct exposure the Company faces in its markets, supply chain and "
+         f"operations around the world." for i in range(25)]
+NEW_RISK = "Tariffs on imported components could raise the Company's costs and reduce the margins it earns on its devices."
+
+
+def write_filing(root, ticker, period_end, accession, paragraphs):
+    import json
+    folder = root / ticker
+    folder.mkdir(parents=True, exist_ok=True)
+    data = {"ticker": ticker, "period_end": period_end, "accession": accession,
+            "items": {"Item 1A": "Item 1A. Risk Factors\n\n" + "\n\n".join(paragraphs)}}
+    (folder / f"{period_end}_{accession}.json").write_text(json.dumps(data), encoding="utf-8")
+
+
+def test_risk_factor_question_is_answered_from_exact_quotes_without_any_model(tmp_path):
+    root = tmp_path / "filings"
+    write_filing(root, "AAPL", "2024-09-28", "a24", RISKS)
+    write_filing(root, "AAPL", "2025-09-27", "a25", RISKS[1:] + [NEW_RISK])
+    for question in ["What changed in Apple's risk factors?",
+                     "What changed in Apple's risk factors between fiscal 2024 and fiscal 2025?"]:
+        result = ask(question, deps(tmp_path, decide=never, chat=never, filings_dir=root))
+        assert result.refusal is None and result.attempts == 0, question
+        assert f'"{NEW_RISK}"' in result.answer and f'"{RISKS[0]}"' in result.answer
+        assert "period ending 2024-09-28 (filing a24)" in result.answer and "2025-09-27" in result.answer
+
+
+def test_risk_diff_for_a_year_without_a_report_is_refused(tmp_path):
+    result = ask("What changed in Apple's risk factors in fiscal 2019?",
+                 deps(tmp_path, decide=never, chat=never, filings_dir=tmp_path))
+    assert result.answer is None and "2019" in result.refusal

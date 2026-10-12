@@ -20,6 +20,8 @@ from tickandtie.agents.numbers import METRICS, fiscal_years, lookup
 from tickandtie.agents.router import route
 from tickandtie.agents.verifier import CITATION, NOT_COVERED, split_claims, verify
 from tickandtie.agents.writer import write
+from tickandtie.diff.answer import render_diff
+from tickandtie.diff.risk_diff import FILINGS, compare
 
 TRACE_DIR = config.DATA_DIR / "traces"
 PASSAGES_PER_QUESTION = 6
@@ -49,6 +51,7 @@ class Deps:
     decide: Any = None  # the Router's model call; None means the real model
     chat: Any = None    # the Writer's model call; None means the real model
     trace_dir: Path = TRACE_DIR
+    filings_dir: Path = FILINGS
 
 
 def default_deps():
@@ -182,8 +185,34 @@ def build_graph(deps):
         update["trace"] = logged(state, "finalise", started, removed=len(update["removed"]))
         return update
 
+    def risk_diff_node(state):
+        started = time.perf_counter()
+        plan = state["plan"]
+        ticker = plan.tickers[0]
+        name = config.COMPANY_NAMES[ticker]
+        older = newer = None
+        if plan.fiscal_years:
+            available = fiscal_years(deps.con, ticker)
+            missing = [year for year in plan.fiscal_years if year not in available]
+            if missing:
+                return {"refusal": f"I have no annual report for {name} for fiscal {missing[0]}.",
+                        "trace": logged(state, "risk_diff", started, missing=missing)}
+            periods = sorted(str(available[year]) for year in plan.fiscal_years)
+            newer = periods[-1]
+            older = periods[0] if len(periods) > 1 else None
+        result = compare(ticker, older=older, newer=newer, root=deps.filings_dir)
+        if result is None:
+            return {"refusal": f"I need two annual reports with risk factor text for {name} to compare, "
+                               f"and I do not have them for the years asked.",
+                    "trace": logged(state, "risk_diff", started, older=older, newer=newer)}
+        return {"answer": render_diff(result, name), "removed": [],
+                "trace": logged(state, "risk_diff", started, older=result.older, newer=result.newer,
+                                changes=len(result.changes))}
+
     def after_route(state):
-        return END if state.get("refusal") else "gather"
+        if state.get("refusal"):
+            return END
+        return "risk_diff" if state["plan"].task == "risk_diff" else "gather"
 
     def after_gather(state):
         return END if state.get("refusal") else "write"
@@ -197,12 +226,14 @@ def build_graph(deps):
     graph.add_node("write", write_node)
     graph.add_node("verify", verify_node)
     graph.add_node("finalise", finalise_node)
+    graph.add_node("risk_diff", risk_diff_node)
     graph.add_edge(START, "route")
-    graph.add_conditional_edges("route", after_route, {"gather": "gather", END: END})
+    graph.add_conditional_edges("route", after_route, {"gather": "gather", "risk_diff": "risk_diff", END: END})
     graph.add_conditional_edges("gather", after_gather, {"write": "write", END: END})
     graph.add_edge("write", "verify")
     graph.add_conditional_edges("verify", after_verify, {"write": "write", "finalise": "finalise"})
     graph.add_edge("finalise", END)
+    graph.add_edge("risk_diff", END)
     return graph.compile()
 
 

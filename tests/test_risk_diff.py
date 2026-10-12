@@ -82,3 +82,11 @@ def test_a_small_edit_is_shown_word_by_word():
 def test_tiny_fragments_are_ignored():
     newer = BASE[:3] + [BASE[3] + " See below."] + BASE[4:]
     assert diff_texts(text(BASE), text(newer)).changes == []
+
+def test_the_diff_answer_quotes_exactly_and_names_both_filings():
+    from tickandtie.diff.answer import render_diff
+    newer = BASE[:3] + [BASE[3].replace("lower prices", "much lower prices")] + BASE[4:]
+    result = diff_texts(text(BASE), text(newer))
+    result.older, result.newer, result.older_accession, result.newer_accession = "2024-12-31", "2025-12-31", "a1", "a2"
+    answer = render_diff(result, "Test Co")
+    assert "Test Co's risk factors" in answer and "(filing a1)" in answer and "{+much+}" in answer
