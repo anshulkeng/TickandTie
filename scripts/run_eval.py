@@ -23,6 +23,7 @@ from tickandtie.agents.pipeline import Deps, LazySearcher, ask
 from tickandtie.agents.router import find_companies
 from tickandtie.agents.verifier import CITATION
 from tickandtie.agents.writer import CONTEXT_TOKENS
+from tickandtie.llm import backend
 
 QUESTIONS = Path("eval/questions.jsonl")
 RESULTS = Path("eval/results")
@@ -107,7 +108,7 @@ def main():
                     record = run_baseline(question["question"], searcher)
             except Exception as exc:  # recorded, never hidden; delete the line to retry it
                 record = {"error": repr(exc)}
-            record = {"id": question["id"], "mode": args.mode, "commit": commit,
+            record = {"id": question["id"], "mode": args.mode, "commit": commit, "backend": backend(),
                       "question": question["question"], **record}
             handle.write(json.dumps(record, ensure_ascii=False) + "\n")
             handle.flush()

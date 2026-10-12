@@ -150,15 +150,13 @@ def find_metrics(question):
 
 def ask_model(question):
     """One structured call: does the question need text, and which sections? Returns (decision, error)."""
-    import ollama
+    from tickandtie import llm
     try:
-        response = ollama.chat(
-            model=config.LLM_MODEL,
+        reply = llm.chat(
             messages=[{"role": "system", "content": ROUTER_PROMPT}, {"role": "user", "content": question}],
-            format=RouteDecision.model_json_schema(),
-            options={"temperature": 0, "seed": 7},
+            schema=RouteDecision.model_json_schema(),
         )
-        return RouteDecision.model_validate_json(response["message"]["content"]), None
+        return RouteDecision.model_validate_json(reply), None
     except Exception as exc:  # a bad model reply must never crash routing; the caller falls back
         return None, repr(exc)
 

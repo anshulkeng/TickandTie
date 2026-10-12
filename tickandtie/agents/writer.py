@@ -36,7 +36,5 @@ def write(question, evidence, gaps=None, problems=None, previous=None, chat=None
 
 
 def ollama_chat(messages):
-    import ollama
-    response = ollama.chat(model=config.LLM_MODEL, messages=messages,
-                           options={"temperature": 0, "seed": 7, "num_ctx": CONTEXT_TOKENS})
-    return response["message"]["content"]
+    from tickandtie import llm
+    return llm.chat(messages, num_ctx=CONTEXT_TOKENS)

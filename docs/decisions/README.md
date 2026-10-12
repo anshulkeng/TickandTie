@@ -22,3 +22,4 @@ One file per decision: context, decision, alternatives considered, consequences.
 | [0016](0016-partial-answers-and-pipeline.md) | Keep verified sentences, remove failed ones, and say so |
 | [0017](0017-evaluation-method.md) | How Tick & Tie is evaluated |
 | [0018](0018-risk-factor-diff.md) | The risk-factor diff is plain code with exact quotes |
+| [0019](0019-hosted-model-with-demo-fallback.md) | Hosted model with a spending cap, and demo mode as the fallback |
