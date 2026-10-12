@@ -1,0 +1,63 @@
+# Risk-factor diff check. For each block, set LABEL to yes or no.
+#
+# yes: a real difference in content between the two filings, even a single word.
+# no:  noise. The text is really in both filings, or it is a fragment, or a sentence was split differently.
+# The CLOSEST line shows the most similar sentence in the other filing, to help you decide.
+# Only edit the LABEL and NOTE lines.
+
+=== S01 | MSFT 2025-06-30 -> 2026-06-30 | added
+SENTENCE: Threat actors also utilize emerging technologies such as AI and machine learning to, among other things, increase the speed and scale of attacks by generating and refining malicious content and code, automate reconnaissance and targeting, accelerate their ability to detect or exploit vulnerabilities, and rapidly iterate on attack techniques, which can broaden the scope, intensity, and sophistication of campaigns and reduce the time we have to identify and mitigate emerging threats.
+CLOSEST IN OLDER FILING (similarity 0.29): Threat actors may also utilize emerging technologies, such as AI and machine learning.
+LABEL: 
+NOTE: 
+
+=== S02 | JPM 2024-12-31 -> 2025-12-31 | edited
+SENTENCE: [-•losing-] {+•loss of+} permission to operate certain businesses, either temporarily or permanently.
+LABEL: 
+NOTE: 
+
+=== S03 | MSFT 2025-06-30 -> 2026-06-30 | added
+SENTENCE: We may experience outages, disruptions, or capacity constraints if we fail to maintain and operate adequate infrastructure or secure the resources necessary to support it.
+CLOSEST IN OLDER FILING (similarity 0.47): We may have excessive outages, data losses, and disruptions of our online services if we fail to maintain an adequate operations infrastructure.
+LABEL: 
+NOTE: 
+
+=== S04 | JPM 2024-12-31 -> 2025-12-31 | added
+SENTENCE: All of these outcomes could adversely affect JPMorganChase’s earnings or its liquidity and capital levels, with more severe impacts in a prolonged period of high interest rates.
+CLOSEST IN OLDER FILING (similarity 0.87): All of these outcomes could adversely affect JPMorganChase’s earnings or its liquidity and capital levels, and any negative outcomes could be more severe in a prolonged period of high interest rates.
+LABEL: 
+NOTE: 
+
+=== S05 | JPM 2024-12-31 -> 2025-12-31 | removed
+SENTENCE: Not all of JPMorganChase’s clients, customers, vendors, counterparties and other external parties may have appropriate controls in place to protect the confidentiality, integrity or availability of the information exchanged between them and JPMorganChase, particularly where information is transmitted by electronic means.
+CLOSEST IN NEWER FILING (similarity 0.33): JPMorganChase’s interconnectivity with clients, customers and other external parties continues to expand, which increases the risk of failure or cyber attacks with respect to the systems of those parties.
+LABEL: 
+NOTE: 
+
+=== S06 | JPM 2024-12-31 -> 2025-12-31 | edited
+SENTENCE: JPMorganChase’s [-operations-] {+compliance risk+} and [-financial results can-] {+operating costs could+} be [-negatively impacted-] {+higher+} in jurisdictions with less predictable [-legal-] {+legal, regulatory+} and [-regulatory-] {+judicial+} frameworks.
+LABEL: 
+NOTE: 
+
+=== S07 | MSFT 2025-06-30 -> 2026-06-30 | added
+SENTENCE: In addition, infrastructure in certain geographies carries higher safety and reliability risks.
+CLOSEST IN OLDER FILING (similarity 0.42): Maintaining, securing, and expanding this infrastructure is expensive and complex, and requires development of principles for datacenter builds in geographies with higher safety and reliability risks.
+LABEL: 
+NOTE: 
+
+=== S08 | JPM 2024-12-31 -> 2025-12-31 | edited
+SENTENCE: [-The-] {+In addition to holding the stock of other JPMorganChase subsidiaries, the+} IHC [-also-] owns other assets and provides intercompany lending to the Parent Company.
+LABEL: 
+NOTE: 
+
+=== S09 | JPM 2024-12-31 -> 2025-12-31 | removed
+SENTENCE: That litigation has also resulted in the seizure of assets.
+CLOSEST IN NEWER FILING (similarity 0.29): •changes in consumer spending or in the level of consumer debt.
+LABEL: 
+NOTE: 
+
+=== S10 | JPM 2024-12-31 -> 2025-12-31 | added
+SENTENCE: Furthermore, the interconnectivity across credit markets increases the risk that the significant expansion of private credit could worsen losses among non-bank lenders and their borrowers, particularly if stress or defaults spread to broader funding and credit markets.
+CLOSEST IN OLDER FILING (similarity 0.22): Furthermore, the widespread and expanding interconnectivity among financial institutions, clearing banks, CCPs, payments processors, financial technology companies, securities exchanges, clearing houses and other financial market infrastructures increases the risk that the disruption of an operational system involving one institution or entity, including due to a cyber attack, may cause industry-wide operational disruptions that could materially affect JPMorganChase’s ability to conduct business.
+LABEL: 
+NOTE: 
