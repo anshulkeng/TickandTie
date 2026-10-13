@@ -1,12 +1,14 @@
 """Tests for the job list, the worker and the API, with a fake answer function (no model needed)."""
+import pytest
 from fastapi.testclient import TestClient
 
 from tickandtie.api.app import create_app
 from tickandtie.api.jobs import JobStore
+from tickandtie.api.limits import Limits, RateLimited, check
 
 
-def client_with(tmp_path, answer):
-    app = create_app(JobStore(tmp_path / "jobs.sqlite"), answer=answer, start_worker=False)
+def client_with(tmp_path, answer, limits=None):
+    app = create_app(JobStore(tmp_path / "jobs.sqlite"), answer=answer, start_worker=False, limits=limits)
     return app, TestClient(app)
 
 
@@ -66,3 +68,47 @@ def test_old_jobs_are_deleted(tmp_path):
     store = JobStore(tmp_path / "jobs.sqlite")
     job_id = store.submit("Question?", "client")
     assert store.purge(max_age_seconds=-1) == 1 and store.get(job_id) is None
+
+def test_errors_use_one_standard_format(tmp_path):
+    app, client = client_with(tmp_path, lambda q: {})
+    assert client.get("/api/questions/nope").json() == {
+        "error": {"code": "not_found", "message": "No question with that id."}}
+    bad = client.post("/api/questions", json={"question": "hi"})
+    assert bad.status_code == 422 and bad.json()["error"]["code"] == "invalid_question"
+
+
+def test_control_characters_and_extra_spaces_are_cleaned(tmp_path):
+    app, client = client_with(tmp_path, lambda q: {"answer": q})
+    job = client.post("/api/questions", json={"question": "What  was\x00 Apple's\n revenue?"}).json()
+    assert client.get(f"/api/questions/{job['id']}").json()["question"] == "What was Apple's revenue?"
+
+
+def test_a_visitor_is_limited_per_minute_with_a_retry_time(tmp_path):
+    app, client = client_with(tmp_path, lambda q: {}, limits=Limits(per_minute=2, per_day=10, site_per_day=100))
+    for _ in range(2):
+        assert client.post("/api/questions", json={"question": "Question?"}).status_code == 202
+    blocked = client.post("/api/questions", json={"question": "Question?"})
+    assert blocked.status_code == 429 and blocked.json()["error"]["code"] == "rate_limited"
+    assert 1 <= int(blocked.headers["Retry-After"]) <= 60
+
+
+def test_daily_and_site_wide_limits(tmp_path):
+    store = JobStore(tmp_path / "jobs.sqlite")
+    limits = Limits(per_minute=100, per_day=3, site_per_day=5)
+    start = 1_000_000.0
+    for i in range(3):
+        store.submit("Question?", "visitor-a", now=start + i * 120)
+    with pytest.raises(RateLimited, match="today"):
+        check(store, "visitor-a", limits, now=start + 400)
+    check(store, "visitor-a", limits, now=start + 86_401)  # a day later the oldest has expired
+    for i in range(2):
+        store.submit("Question?", "visitor-b", now=start + 500 + i)
+    with pytest.raises(RateLimited, match="all visitors"):
+        check(store, "visitor-c", limits, now=start + 600)
+
+
+def test_visitor_ids_are_scrambled_not_raw_addresses(tmp_path):
+    app, client = client_with(tmp_path, lambda q: {})
+    job = client.post("/api/questions", json={"question": "Question?"}).json()
+    stored = app.state.store.get(job["id"])["client"]
+    assert stored != "testclient" and len(stored) == 16
