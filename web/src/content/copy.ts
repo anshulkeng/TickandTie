@@ -41,4 +41,14 @@ export const messages = {
   labelRefused: "Not answered",
   labelSaved: "Saved answer",
   labelDemo: "Demo mode",
+  citationLabel: (id: string) => `Source ${id}`,
+  notCovered: "Not covered:",
+  removed: (count: number) =>
+    `${count} sentence${count === 1 ? "" : "s"} could not be verified and ${count === 1 ? "was" : "were"} removed.`,
+  trySaved: "Saved questions you can try:",
+  sources: "Sources",
+  periods: "Periods",
+  checkedDetails: "How this answer was checked",
+  seconds: (seconds: number) => `Answered in ${seconds.toFixed(1)} seconds.`,
+  savedExplainer: "Live answers are paused, so this is a saved answer from the October 2026 evaluation.",
 };

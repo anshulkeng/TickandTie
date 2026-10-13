@@ -6,6 +6,7 @@ import { copy, examples, messages } from "@/content/copy";
 import { ApiError, getJob, getStatus, submitQuestion, type Result, type Status } from "@/lib/api";
 import { GIVE_UP_AFTER_MS, nextDelay, SLOW_AFTER_MS } from "@/lib/polling";
 
+import { AnswerView } from "./AnswerView";
 import { Copy } from "./Copy";
 
 type Phase =
@@ -70,6 +71,11 @@ export function AskPanel() {
     }
   }
 
+  function pick(example: string) {
+    setQuestion(example);
+    textarea.current?.focus();
+  }
+
   const busy = phase.kind === "waiting";
   const demo = status !== null && status !== "unreachable" && status.mode === "demo";
 
@@ -120,7 +126,7 @@ export function AskPanel() {
           {phase.kind === "error" && (
             <p role="alert" className="border-l-4 border-refuse bg-white px-4 py-3 text-sm">{phase.message}</p>
           )}
-          {phase.kind === "done" && <AnswerView result={phase.result} />}
+          {phase.kind === "done" && <AnswerView result={phase.result} onPick={pick} />}
         </div>
       </section>
 
@@ -133,10 +139,7 @@ export function AskPanel() {
             <li key={example}>
               <button
                 type="button"
-                onClick={() => {
-                  setQuestion(example);
-                  textarea.current?.focus();
-                }}
+                onClick={() => pick(example)}
                 className="w-full py-2.5 text-left font-mono text-sm underline-offset-4 hover:underline"
               >
                 {example}
@@ -146,24 +149,5 @@ export function AskPanel() {
         </ul>
       </section>
     </div>
-  );
-}
-
-/** A basic answer display; step 8c replaces it with clickable citations and the sources panel. */
-function AnswerView({ result }: { result: Result }) {
-  const refused = result.answer === null;
-  const label =
-    result.mode === "demo"
-      ? result.saved
-        ? messages.labelSaved
-        : messages.labelDemo
-      : refused
-        ? messages.labelRefused
-        : messages.labelVerified;
-  return (
-    <article className={`border-l-4 bg-white px-5 py-4 ${refused ? "border-refuse" : "border-tick"}`}>
-      <p className="mb-2 font-mono text-xs uppercase tracking-wide text-muted">{label}</p>
-      <p className="whitespace-pre-line">{result.answer ?? result.refusal}</p>
-    </article>
   );
 }

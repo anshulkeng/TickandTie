@@ -20,4 +20,5 @@ The Router turns a question into a plan: companies, fiscal years, metrics, wheth
 ## Consequences
 - Companies, years and metrics are fully covered by unit tests.
 - Questions about companies not in the corpus never reach the model.
-- The section choice can still be wrong. The evaluation in Task 5 measures it.- Added after the Task 5 evaluation, from trying the website: "How did X do?" questions name no figure, so they get the headline figures (revenue, net income, diluted EPS) plus the explaining text. A year with no filing text in the index is named as a gap instead of ending in a bare refusal. These changes were not part of the evaluated system.
+- The section choice can still be wrong. The evaluation in Task 5 measures it.
+- Added after the Task 5 evaluation, from trying the website: "How did X do?" questions name no figure, so they get the headline figures (revenue, net income, diluted EPS) plus the explaining text. A year with no filing text in the index is named as a gap instead of ending in a bare refusal. These changes were not part of the evaluated system.
