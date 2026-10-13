@@ -93,3 +93,15 @@ The traces showed that most narrative refusals came from a citation-style regres
 - The four questions the traces blamed on citation style (n05, n06, n07, n12) were answered. The two that remained refused (n13, n17) are the two the traces attributed to real problems: figures not in the cited evidence, and a retrieval miss.
 - Figures, refusals and tricky questions were unchanged, so the fix did not loosen the Verifier.
 - The four newly answered narrative answers were not hand-labelled, so their faithfulness is not measured.
+## Deployment check on the hosted model
+
+The website uses Qwen2.5 7B Instruct through OpenRouter (decision 0019), a full-precision version of the model evaluated locally. All 81 questions were run once on it at commit `df88ca8` (`eval/results/system_hosted.jsonl`), with a pass mark fixed in decision 0019 before the run. It is a deployment check, not a fresh result.
+
+| | Required | Hosted |
+| --- | --- | --- |
+| Wrong figures | 0 | 0 |
+| Numeric correct | at least 46 of 48 | 48 of 48 |
+| Should refuse: declined | 10 of 10 | 10 of 10 |
+| Tricky: passed | 3 of 3 | 3 of 3 |
+
+Result: PASS. Narrative questions: 18 answered, 2 refused. Median answer time 1.1 seconds and 90th percentile 7.0 seconds, against 22.5 and 69.4 locally; a few answers took 40 to 170 seconds, so the API needs a time limit. Partial answers rose from 3 to 6: the Verifier removed more sentences from hosted drafts. The planted-figure question was answered with the true figure, where the local model had refused it. The faithfulness of hosted narrative answers was not hand-labelled.

@@ -1,0 +1,23 @@
+{
+ "system_hosted": {
+  "numeric": {
+   "correct": 48
+  },
+  "narrative": {
+   "answered": 18,
+   "phrase_in_cited_evidence": 18,
+   "refused": 2
+  },
+  "refuse": {
+   "acknowledged": 10
+  },
+  "tricky": {
+   "passed": 3
+  },
+  "refused_answerable": 2,
+  "rewrites": 16,
+  "partial_answers": 6,
+  "seconds_median": 1.1,
+  "seconds_p90": 7.0
+ }
+}
