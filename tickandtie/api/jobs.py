@@ -90,3 +90,7 @@ class JobStore:
             cursor = self.db.execute("DELETE FROM jobs WHERE created < ?", (time.time() - max_age_seconds,))
             self.db.commit()
             return cursor.rowcount
+    def queued(self):
+        """How many questions are waiting."""
+        with self.lock:
+            return self.db.execute("SELECT COUNT(*) FROM jobs WHERE status = 'queued'").fetchone()[0]
