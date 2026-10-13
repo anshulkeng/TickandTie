@@ -18,7 +18,7 @@ export type Result = {
 
 export type Job = {
   id: string;
-  status: "queued" | "running" | "done" | "failed";
+  status: "queued" | "running" | "done" | "failed" | "abandoned";
   question: string;
   position?: number;
   result?: Result;

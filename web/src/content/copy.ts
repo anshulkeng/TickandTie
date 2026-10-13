@@ -6,7 +6,7 @@ export const copy = {
   siteDescription: "Answers from the annual reports of public companies, checked against SEC filings.",
   heroHeading: "Ask questions about twelve companies and get answers from their annual reports.",
   heroIntro:
-    "Tick & Tie answer questions about  12 U.S. public companies such as Apple, Walmart and Pfizer. The answers are checked against the companies' SEC filings, so you can trust them.",
+    "Tick & Tie answers questions about  12 U.S. public companies such as Apple, Walmart and Pfizer. The answers are checked against the companies' SEC filings.",
   examplesHeading: "Try asking questions like these:",
   footerNote: "An independent project by Anshul Keng. Free to use, but please don't use it to make investment decisions.",
 } as const;

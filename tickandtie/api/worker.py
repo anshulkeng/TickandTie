@@ -48,7 +48,20 @@ class Worker:
             warning("job_failed", job=job_id, error=type(exc).__name__)
         return True
 
+    def warm_up(self):
+        """Load what the first answer needs (the search indexes) before any visitor is waiting."""
+        warm = getattr(self.answer, "warm", None)
+        if warm is None:
+            return
+        started = time.perf_counter()
+        try:
+            warm()
+            info("warmed_up", seconds=round(time.perf_counter() - started, 2))
+        except Exception as exc:
+            warning("warm_up_failed", error=type(exc).__name__)
+
     def loop(self):
+        self.warm_up()
         while not self.stopping.is_set():
             self.maintenance()
             if not self.run_once():

@@ -88,3 +88,16 @@ def test_ordinary_risk_questions_are_not_mistaken_for_a_diff():
 def test_a_risk_diff_needs_exactly_one_company():
     plan = route("Compare the risk factors of Apple and Microsoft", decide=never)
     assert plan.refusal and "one company" in plan.refusal
+
+def test_how_did_a_company_do_questions_get_the_headline_figures():
+    # Found while trying the website: "How is apple doing in 2022" named no figure and was refused.
+    for question in ["How is apple doing in 2022", "How did Walmart perform in fiscal 2025?",
+                     "What was Pfizer's performance in 2024?"]:
+        plan = route(question, decide=says(True, ["Item 7"]))
+        assert plan.metrics == ["revenue", "net_income", "eps_diluted"] and plan.needs_numbers, question
+
+
+def test_questions_with_their_own_figure_or_about_methods_are_unchanged():
+    assert route("How does JPMorgan manage interest rate risk?", decide=says(True, ["Item 7A"])).metrics == []
+    plan = route("How did Walmart's net income change from FY2025 to FY2026?", decide=says(True, ["Item 7"]))
+    assert plan.metrics == ["net_income"]

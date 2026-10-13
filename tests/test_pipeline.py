@@ -141,3 +141,15 @@ def test_risk_diff_for_a_year_without_a_report_is_refused(tmp_path):
     result = ask("What changed in Apple's risk factors in fiscal 2019?",
                  deps(tmp_path, decide=never, chat=never, filings_dir=tmp_path))
     assert result.answer is None and "2019" in result.refusal
+
+def test_a_year_without_filing_text_is_named_as_a_gap(tmp_path):
+    seen = {}
+
+    def chat(messages):
+        seen["prompt"] = messages[-1]["content"]
+        return "Apple's revenue in fiscal 2024 was $391,035 million [F1]."
+
+    result = ask("How did Apple do in fiscal 2024?",
+                 deps(tmp_path, decide=risk_sections, searcher=FakeSearcher({}), chat=chat))
+    assert result.answer is not None
+    assert "the text of Apple's annual report for fiscal 2024 is not in my data" in seen["prompt"]

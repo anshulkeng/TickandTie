@@ -43,6 +43,12 @@ class LazySearcher:
             self._searcher = HybridSearcher()
         return self._searcher.search(*args, **kwargs)
 
+    def warm(self):
+        """Load the search indexes now, so the first visitor does not wait for them."""
+        if self._searcher is None:
+            from tickandtie.index.hybrid import HybridSearcher
+            self._searcher = HybridSearcher()
+
 
 @dataclass
 class Deps:
@@ -141,6 +147,8 @@ def build_graph(deps):
                     notes.append(f"{name}: too little text in {', '.join(plan.sections)}, "
                                  f"so every section was searched")
                     chunks = deps.searcher.search(plan.question, k=k, ticker=ticker, period_end=period_end)
+                if not chunks and year is not None:
+                    gaps.append(f"the text of {name}'s annual report for fiscal {year} is not in my data")
                 for chunk in chunks:
                     evidence.add_passage(chunk)
         update = {"evidence": evidence, "gaps": gaps, "notes": notes,

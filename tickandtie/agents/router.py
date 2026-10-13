@@ -75,6 +75,15 @@ RISK_DIFF = re.compile(
     r"|\brisks?\b[^?]*\b(?:added|removed|dropped)\b",
     re.IGNORECASE,
 )
+# "How did X do?" questions name no figure, so they get the headline figures plus the text that explains them.
+# Narrow on purpose: "How does X manage..." and "How did X's net income change" are unaffected.
+PERFORMANCE = re.compile(
+    r"\bhow\s+(?:did|is|was|has|have)\b[^?]*\b(?:do|doing|done|perform(?:ed|ing)?|fare[ds]?|faring)\b"
+    r"|\b(?:financial\s+)?performance\b|\bfinancial results\b",
+    re.IGNORECASE,
+)
+HEADLINE_METRICS = ["revenue", "net_income", "eps_diluted"]
+
 # Tick & Tie reports what companies filed; it never says whether to trade their shares. Narrow on
 # purpose, so questions such as "How much did Apple invest in R&D?" are still answered.
 ADVICE = re.compile(
@@ -168,6 +177,8 @@ def route(question, decide=None):
     tickers = find_companies(question)
     years = find_years(question)
     metrics = find_metrics(question)
+    if not metrics and PERFORMANCE.search(question):
+        metrics = list(HEADLINE_METRICS)
     if not tickers:
         covered = ", ".join(config.COMPANY_NAMES[ticker] for ticker in config.COMPANIES)
         return Plan(question, [], years, metrics, False, False, [],
