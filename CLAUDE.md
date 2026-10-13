@@ -62,7 +62,8 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Done: Task 4 (core agents). `python -m scripts.ask` answers with verified, cited figures; 11 of 11 end-to-end checks pass, including a planted wrong number that is never shown.
 - Done: Task 5 (evaluation). Results in eval/RESULTS.md, method in decision 0017.
 - Done: Task 6 (risk-factor diff). Ask, for example, "What changed in Pfizer's risk factors?". Plain code, exact quotes, decision 0018; 10 of 10 checked changes real.
-- Next: decide hosting for the 7B model (it shapes Tasks 8 and 9), then Task 7 (API).
+- Done: hosting decided (decision 0019): Qwen2.5 7B on OpenRouter with a spending cap, demo mode as the fallback. Deployment check passed: 48/48 correct, 0 wrong, 10/10 declined, 3/3 tricky; median 1.1 s.
+- Next: Task 7 (API): job queue, rate limits, a time limit per question, demo mode when the model is unavailable.
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

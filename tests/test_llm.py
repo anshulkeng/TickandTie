@@ -57,11 +57,12 @@ def test_a_failed_hosted_call_is_reported_not_hidden(monkeypatch):
 
 def test_the_router_calls_the_model_through_the_switch(monkeypatch):
     # Found while wiring: a half-applied edit made routing fail silently, and no test called the real function.
+    # The fake answers Item 7A, which the real model would not pick for a risk question, so this cannot pass by accident.
     from tickandtie.agents.router import ask_model
     monkeypatch.setattr(llm, "chat", lambda messages, schema=None, num_ctx=None:
-                        '{"needs_text": true, "sections": ["Item 1A"]}')
+                        '{"needs_text": true, "sections": ["Item 7A"]}')
     decision, error = ask_model("What risks does Pfizer describe?")
-    assert error is None and decision.sections == ["Item 1A"]
+    assert error is None and decision.sections == ["Item 7A"]
 
 
 def test_the_writer_calls_the_model_through_the_switch(monkeypatch):
