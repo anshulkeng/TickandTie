@@ -63,7 +63,8 @@ It is a portfolio project for hiring panels, built to show engineering judgment,
 - Done: Task 5 (evaluation). Results in eval/RESULTS.md, method in decision 0017.
 - Done: Task 6 (risk-factor diff). Ask, for example, "What changed in Pfizer's risk factors?". Plain code, exact quotes, decision 0018; 10 of 10 checked changes real.
 - Done: hosting decided (decision 0019): Qwen2.5 7B on OpenRouter with a spending cap, demo mode as the fallback. Deployment check passed: 48/48 correct, 0 wrong, 10/10 declined, 3/3 tricky; median 1.1 s.
-- Next: Task 7 (API): job queue, rate limits, a time limit per question, demo mode when the model is unavailable.
+- Done: Task 7 (API), decision 0020. Run: uvicorn tickandtie.api.app:create_app --factory --no-access-log --port 8000; then python -m scripts.try_api in another terminal.
+- Next: Task 8 (website, Next.js + Tailwind), following the website design rules; poll answers with growing intervals.
 
 ## Architecture decisions
 See docs/decisions/ for every decision and why it was made.

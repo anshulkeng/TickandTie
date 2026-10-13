@@ -21,3 +21,9 @@ Verifying every figure removes wrong numbers; it does not make narrative text mo
 ## Risk-factor changes
 
 Ask what changed in a company's risk factors, for example "What changed in Pfizer's risk factors?", and Tick & Tie compares the Item 1A text of two annual reports in plain code: new, removed and reworded sentences, each quoted exactly, with both filings named. No language model writes this answer. On 10 reported changes drawn at random from five companies, all 10 were real differences ([decision 0018](docs/decisions/0018-risk-factor-diff.md)).
+## Run the API locally
+
+    uvicorn tickandtie.api.app:create_app --factory --no-access-log --port 8000
+    python -m scripts.try_api
+
+The second command, in another terminal, asks three questions the way the website will: submit, then check back for the answer. Design, limits and privacy rules: [decision 0020](docs/decisions/0020-web-api.md).

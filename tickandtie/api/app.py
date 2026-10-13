@@ -1,6 +1,7 @@
 """The Tick & Tie web API (Task 7): submit a question, then check back for the answer.
 
-Run locally:  uvicorn tickandtie.api.app:create_app --factory --port 8000
+Run locally:  uvicorn tickandtie.api.app:create_app --factory --no-access-log --port 8000
+(--no-access-log: uvicorn's own access log prints visitor addresses; ours does not)
 
 Every error has one format: {"error": {"code": ..., "message": ...}}, with no internal details.
 Visitors are identified only by a salted, scrambled code of their address, used for rate limits.
@@ -11,10 +12,14 @@ import hmac
 import os
 import re
 import secrets
+import time
+import uuid
 from contextlib import asynccontextmanager
+from pathlib import Path
 
 from fastapi import FastAPI, Request
 from fastapi.exceptions import RequestValidationError
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel, Field, field_validator
 from starlette.exceptions import HTTPException
@@ -23,6 +28,7 @@ from tickandtie import config
 from tickandtie.api.demo import DemoMode
 from tickandtie.api.jobs import JobStore
 from tickandtie.api.limits import Limits, RateLimited, check
+from tickandtie.api.logs import info, warning
 from tickandtie.api.worker import Worker
 from tickandtie.llm import ModelUnavailable
 
@@ -94,12 +100,20 @@ def answer_with_pipeline(demo, ask_fn=None, make_deps=None):
         except ModelUnavailable as exc:
             if live:
                 demo.trip(str(exc))
+                warning("demo_mode_on", reason=str(exc), minutes=demo.minutes)
             return demo.answer_for(question)
 
     return answer
 
 
-def create_app(store=None, answer=None, start_worker=True, limits=None, salt=None, demo=None):
+def default_checks():
+    """What the API needs on disk to answer questions."""
+    return {"facts": lambda: (config.DATA_DIR / "facts.duckdb").exists(),
+            "search_index": lambda: (config.DATA_DIR / "chroma").exists(),
+            "filings": lambda: (config.DATA_DIR / "filings").exists()}
+
+
+def create_app(store=None, answer=None, start_worker=True, limits=None, salt=None, demo=None, checks=None):
     store = store or JobStore(JOBS_DB)
     demo = demo or DemoMode()
     worker = Worker(store, answer or answer_with_pipeline(demo))
@@ -116,6 +130,21 @@ def create_app(store=None, answer=None, start_worker=True, limits=None, salt=Non
 
     app = FastAPI(title="Tick & Tie API", lifespan=lifespan)
     app.state.store, app.state.worker, app.state.demo = store, worker, demo
+    checks = default_checks() if checks is None else checks
+    origins = [o.strip() for o in os.environ.get("TICKANDTIE_CORS_ORIGINS", "http://localhost:3000").split(",")
+               if o.strip()]
+    app.add_middleware(CORSMiddleware, allow_origins=origins, allow_methods=["GET", "POST"],
+                       allow_headers=["Content-Type"], expose_headers=["Retry-After", "X-Request-ID"])
+
+    @app.middleware("http")
+    async def request_log(request, call_next):
+        request_id = uuid.uuid4().hex[:12]
+        started = time.perf_counter()
+        response = await call_next(request)
+        response.headers["X-Request-ID"] = request_id
+        info("request", request_id=request_id, method=request.method, path=request.url.path,
+             status=response.status_code, ms=round((time.perf_counter() - started) * 1000))
+        return response
 
     @app.exception_handler(HTTPException)
     async def http_error(request, exc):
@@ -163,6 +192,19 @@ def create_app(store=None, answer=None, start_worker=True, limits=None, salt=Non
     @app.get("/api/demo")
     def saved_questions():
         return {"questions": demo.questions()}
+
+    @app.get("/api/health")
+    def health():
+        components = {"jobs": True}
+        try:
+            queued = store.queued()
+        except Exception:
+            components["jobs"], queued = False, None
+        components.update({name: bool(check_fn()) for name, check_fn in checks.items()})
+        healthy = all(components.values())
+        body = {"status": "ok" if healthy else "degraded", "components": components,
+                "mode": demo.status()["mode"], "queued": queued}
+        return JSONResponse(body, status_code=200 if healthy else 503)
 
     @app.get("/api/health/live")
     def live():

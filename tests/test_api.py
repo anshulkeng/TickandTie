@@ -112,3 +112,40 @@ def test_visitor_ids_are_scrambled_not_raw_addresses(tmp_path):
     job = client.post("/api/questions", json={"question": "Question?"}).json()
     stored = app.state.store.get(job["id"])["client"]
     assert stored != "testclient" and len(stored) == 16
+
+def test_old_jobs_are_deleted_at_most_once_an_hour(tmp_path):
+    from tickandtie.api.worker import Worker
+    store = JobStore(tmp_path / "jobs.sqlite")
+    store.submit("Question?", "visitor", now=1.0)
+    clock = [10_000.0]
+    worker = Worker(store, lambda q: {}, keep_days=1, clock=lambda: clock[0])
+    assert worker.maintenance() == 1
+    store.submit("Question?", "visitor", now=1.0)
+    assert worker.maintenance() == 0
+    clock[0] += 3_601
+    assert worker.maintenance() == 1
+
+
+def test_health_reports_each_component(tmp_path):
+    app = create_app(JobStore(tmp_path / "jobs.sqlite"), answer=lambda q: {}, start_worker=False,
+                     checks={"facts": lambda: True, "search_index": lambda: False})
+    reply = TestClient(app).get("/api/health")
+    assert reply.status_code == 503
+    assert reply.json()["components"] == {"jobs": True, "facts": True, "search_index": False}
+
+
+def test_every_response_has_its_own_request_id(tmp_path):
+    app, client = client_with(tmp_path, lambda q: {})
+    first = client.get("/api/health/live").headers["X-Request-ID"]
+    second = client.get("/api/health/live").headers["X-Request-ID"]
+    assert first and second and first != second
+
+
+def test_only_the_website_may_call_the_api_from_a_browser(tmp_path, monkeypatch):
+    monkeypatch.setenv("TICKANDTIE_CORS_ORIGINS", "https://tickandtie.dev")
+    app, client = client_with(tmp_path, lambda q: {})
+    preflight = {"Access-Control-Request-Method": "POST"}
+    allowed = client.options("/api/questions", headers={"Origin": "https://tickandtie.dev", **preflight})
+    assert allowed.headers.get("access-control-allow-origin") == "https://tickandtie.dev"
+    other = client.options("/api/questions", headers={"Origin": "https://example.com", **preflight})
+    assert "access-control-allow-origin" not in other.headers
