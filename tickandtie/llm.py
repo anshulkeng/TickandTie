@@ -11,11 +11,15 @@ from tickandtie import config
 
 OPENROUTER_URL = "https://openrouter.ai/api/v1/chat/completions"
 DEFAULT_HOSTED_MODEL = "qwen/qwen-2.5-7b-instruct"
-TIMEOUT_SECONDS = 120
+TIMEOUT_SECONDS = 40  # per model call; change with TICKANDTIE_LLM_TIMEOUT
 
 
 class ModelUnavailable(RuntimeError):
     """The hosted model could not answer, for example because the spending limit was reached."""
+
+
+def timeout_seconds():
+    return float(os.environ.get("TICKANDTIE_LLM_TIMEOUT", TIMEOUT_SECONDS))
 
 
 def backend():
@@ -46,10 +50,12 @@ def openrouter_chat(messages, schema=None):
     request = urllib.request.Request(OPENROUTER_URL, data=json.dumps(body).encode("utf-8"),
                                      headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"})
     try:
-        with urllib.request.urlopen(request, timeout=TIMEOUT_SECONDS) as response:
+        with urllib.request.urlopen(request, timeout=timeout_seconds()) as response:
             data = json.loads(response.read().decode("utf-8"))
     except urllib.error.HTTPError as exc:
         raise ModelUnavailable(f"hosted model returned HTTP {exc.code}") from exc
+    except TimeoutError as exc:
+        raise ModelUnavailable("hosted model timed out") from exc
     except urllib.error.URLError as exc:
         raise ModelUnavailable(f"hosted model unreachable: {exc.reason}") from exc
     try:
