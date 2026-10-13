@@ -1,0 +1,23 @@
+@import "tailwindcss";
+
+/* Tick & Tie design tokens: an auditor's working paper. Every text colour meets WCAG AA on the paper colour. */
+@theme {
+  --color-paper: #faf8f3;
+  --color-ink: #1f2328;
+  --color-muted: #5b616b;
+  --color-rule: #d8d3c7;
+  --color-tick: #2e6b3f;
+  --color-refuse: #9a3b2e;
+  --color-demo: #7a5f14;
+}
+
+@theme inline {
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-plex-serif), ui-serif, Georgia, serif;
+  --font-mono: var(--font-plex-mono), ui-monospace, monospace;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-tick);
+  outline-offset: 2px;
+}
