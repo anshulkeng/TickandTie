@@ -149,3 +149,24 @@ def test_only_the_website_may_call_the_api_from_a_browser(tmp_path, monkeypatch)
     assert allowed.headers.get("access-control-allow-origin") == "https://tickandtie.dev"
     other = client.options("/api/questions", headers={"Origin": "https://example.com", **preflight})
     assert "access-control-allow-origin" not in other.headers
+
+def test_questions_nobody_is_waiting_for_are_dropped(tmp_path):
+    store = JobStore(tmp_path / "jobs.sqlite")
+    left = store.submit("Left behind?", "visitor", now=1_000.0)
+    waiting = store.submit("Still wanted?", "visitor", now=1_000.0)
+    store.get(waiting, now=1_100.0)
+    assert store.claim(now=1_150.0) == (waiting, "Still wanted?")
+    dropped = store.get(left)
+    assert dropped["status"] == "abandoned" and "ask again" in dropped["result"]["error"]
+
+
+def test_the_worker_loads_the_search_indexes_before_the_first_question(tmp_path):
+    from tickandtie.api.worker import Worker
+    calls = []
+
+    def answer(question):
+        return {}
+
+    answer.warm = lambda: calls.append("warm")
+    Worker(JobStore(tmp_path / "jobs.sqlite"), answer).warm_up()
+    assert calls == ["warm"]

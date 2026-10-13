@@ -50,7 +50,7 @@ export function AskPanel() {
           getStatus().then(setStatus).catch(() => setStatus("unreachable"));
           return;
         }
-        if (current.status === "failed") {
+        if (current.status === "failed" || current.status === "abandoned") {
           setPhase({ kind: "error", message: current.error ?? messages.unexpected });
           return;
         }

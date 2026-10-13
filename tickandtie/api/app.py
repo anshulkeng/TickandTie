@@ -103,6 +103,14 @@ def answer_with_pipeline(demo, ask_fn=None, make_deps=None):
                 warning("demo_mode_on", reason=str(exc), minutes=demo.minutes)
             return demo.answer_for(question)
 
+    def warm():
+        if "deps" not in held:
+            held["deps"] = make_deps()
+        searcher = getattr(held["deps"], "searcher", None)
+        if hasattr(searcher, "warm"):
+            searcher.warm()
+
+    answer.warm = warm
     return answer
 
 
@@ -181,7 +189,7 @@ def create_app(store=None, answer=None, start_worker=True, limits=None, salt=Non
             reply["position"] = job["position"]
         if job["status"] == "done":
             reply["result"] = job["result"]
-        if job["status"] == "failed":
+        if job["status"] in ("failed", "abandoned"):
             reply["error"] = job["result"]["error"]
         return reply
 

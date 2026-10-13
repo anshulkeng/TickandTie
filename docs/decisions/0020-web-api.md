@@ -27,3 +27,4 @@ The website needs an API in front of the pipeline. Answers usually take 1 to 3 s
 - TICKANDTIE_IP_SALT must be set in production. Without it, a new random salt is used on each start, so visitor codes and per-visitor limits reset on every restart.
 - Checking back creates many small requests; the website should check less often as the wait grows.
 - Found while running it: uvicorn's default access log printed visitor addresses, which would have broken the privacy promise on a host that keeps logs.
+- Added after trying the website: a queued question whose page stops checking for 2 minutes is dropped as abandoned, so it cannot block the queue; and the search indexes load when the server starts, so the first visitor does not wait for them.
