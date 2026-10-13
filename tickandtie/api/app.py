@@ -3,7 +3,9 @@
 Run locally:  uvicorn tickandtie.api.app:create_app --factory --port 8000
 
 Every error has one format: {"error": {"code": ..., "message": ...}}, with no internal details.
-Visitors are identified only by a salted, scrambled code of their address, used for rate limits."""
+Visitors are identified only by a salted, scrambled code of their address, used for rate limits.
+Every answer says whether it is "live" or "demo" (decision 0019)."""
+import dataclasses
 import hashlib
 import hmac
 import os
@@ -18,9 +20,11 @@ from pydantic import BaseModel, Field, field_validator
 from starlette.exceptions import HTTPException
 
 from tickandtie import config
+from tickandtie.api.demo import DemoMode
 from tickandtie.api.jobs import JobStore
 from tickandtie.api.limits import Limits, RateLimited, check
 from tickandtie.api.worker import Worker
+from tickandtie.llm import ModelUnavailable
 
 JOBS_DB = config.DATA_DIR / "jobs.sqlite"
 CONTROL = re.compile(r"[\x00-\x1f\x7f]")
@@ -56,25 +60,49 @@ def client_id(request, salt):
     return hmac.new(salt, address.encode("utf-8"), hashlib.sha256).hexdigest()[:16]
 
 
-def answer_with_pipeline():
-    """The real answer function: the full pipeline, set up on first use inside the worker thread."""
-    from tickandtie.agents.pipeline import ask, default_deps
+def as_dict(result, mode):
+    return {"answer": result.answer, "refusal": result.refusal, "sources": result.sources,
+            "periods": result.periods, "notes": result.notes, "removed": len(result.removed),
+            "seconds": result.seconds, "mode": mode, "saved": False}
+
+
+def answer_with_pipeline(demo, ask_fn=None, make_deps=None):
+    """The answer function used by the worker: the full pipeline, with demo mode around it.
+
+    In demo mode the pipeline still runs, but its model calls are blocked, so anything that needs no model
+    (refusals, unreported figures, the risk-factor diff) is still answered. A failed model call switches
+    the site to demo mode and the question gets a saved answer or a clear message instead."""
+    if ask_fn is None or make_deps is None:
+        from tickandtie.agents import pipeline
+        ask_fn = ask_fn or pipeline.ask
+        make_deps = make_deps or pipeline.default_deps
     held = {}
+
+    def no_model_decide(question):
+        return None, "demo mode: the routing model was not called"
+
+    def no_model_chat(messages):
+        raise ModelUnavailable("demo mode: the model was not called")
 
     def answer(question):
         if "deps" not in held:
-            held["deps"] = default_deps()
-        result = ask(question, held["deps"])
-        return {"answer": result.answer, "refusal": result.refusal, "sources": result.sources,
-                "periods": result.periods, "notes": result.notes, "removed": len(result.removed),
-                "seconds": result.seconds}
+            held["deps"] = make_deps()
+        live = not demo.active()
+        deps = held["deps"] if live else dataclasses.replace(held["deps"], decide=no_model_decide, chat=no_model_chat)
+        try:
+            return as_dict(ask_fn(question, deps), "live" if live else "demo")
+        except ModelUnavailable as exc:
+            if live:
+                demo.trip(str(exc))
+            return demo.answer_for(question)
 
     return answer
 
 
-def create_app(store=None, answer=None, start_worker=True, limits=None, salt=None):
+def create_app(store=None, answer=None, start_worker=True, limits=None, salt=None, demo=None):
     store = store or JobStore(JOBS_DB)
-    worker = Worker(store, answer or answer_with_pipeline())
+    demo = demo or DemoMode()
+    worker = Worker(store, answer or answer_with_pipeline(demo))
     limits = limits or Limits.from_env()
     salt = salt or os.environ.get("TICKANDTIE_IP_SALT", "").encode("utf-8") or secrets.token_bytes(32)
 
@@ -87,7 +115,7 @@ def create_app(store=None, answer=None, start_worker=True, limits=None, salt=Non
             worker.shutdown()
 
     app = FastAPI(title="Tick & Tie API", lifespan=lifespan)
-    app.state.store, app.state.worker = store, worker
+    app.state.store, app.state.worker, app.state.demo = store, worker, demo
 
     @app.exception_handler(HTTPException)
     async def http_error(request, exc):
@@ -127,6 +155,14 @@ def create_app(store=None, answer=None, start_worker=True, limits=None, salt=Non
         if job["status"] == "failed":
             reply["error"] = job["result"]["error"]
         return reply
+
+    @app.get("/api/status")
+    def status():
+        return demo.status()
+
+    @app.get("/api/demo")
+    def saved_questions():
+        return {"questions": demo.questions()}
 
     @app.get("/api/health/live")
     def live():

@@ -69,3 +69,18 @@ def test_the_writer_calls_the_model_through_the_switch(monkeypatch):
     from tickandtie.agents.writer import ollama_chat
     monkeypatch.setattr(llm, "chat", lambda messages, schema=None, num_ctx=None: "Answer [F1].")
     assert ollama_chat([{"role": "user", "content": "q"}]) == "Answer [F1]."
+
+def test_a_slow_hosted_call_times_out_and_counts_as_unavailable(monkeypatch):
+    seen = {}
+
+    def slow(request, timeout):
+        seen["timeout"] = timeout
+        raise TimeoutError("timed out")
+
+    monkeypatch.setenv("LLM_BACKEND", "openrouter")
+    monkeypatch.setenv("OPENROUTER_API_KEY", "test-key")
+    monkeypatch.setenv("TICKANDTIE_LLM_TIMEOUT", "40")
+    monkeypatch.setattr(llm.urllib.request, "urlopen", slow)
+    with pytest.raises(llm.ModelUnavailable, match="timed out"):
+        llm.chat(MESSAGES)
+    assert seen["timeout"] == 40.0
