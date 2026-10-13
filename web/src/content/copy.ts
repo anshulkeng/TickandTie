@@ -3,12 +3,12 @@
  * Design rule: no AI-written copy. Each TODO is shown on the page in a dashed box until it is replaced.
  */
 export const copy = {
-  siteDescription: "TODO (Anshul): one sentence for search results saying what Tick & Tie does.",
-  heroHeading: "TODO (Anshul): a specific heading saying what a visitor can do here.",
+  siteDescription: "Answers from the annual reports of public companies, checked against SEC filings.",
+  heroHeading: "Ask questions about twelve companies and get answers from their annual reports.",
   heroIntro:
-    "TODO (Anshul): one or two sentences on what it answers and how every figure is checked against SEC filings.",
-  examplesHeading: "TODO (Anshul): a short heading for the example questions.",
-  footerNote: "TODO (Anshul): one line, for example who built it and that it is not investment advice.",
+    "Tick & Tie answer questions about  12 U.S. public companies such as Apple, Walmart and Pfizer. The answers are checked against the companies' SEC filings, so you can trust them.",
+  examplesHeading: "Try asking questions like these:",
+  footerNote: "An independent project by Anshul Keng. Free to use, but please don't use it to make investment decisions.",
 } as const;
 
 /** Example questions. All were evaluated or need no model, so they also work in demo mode. */
