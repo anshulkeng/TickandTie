@@ -16,7 +16,7 @@ export const privacy = {
 
 export const terms = {
   heading: "Terms",
-    intro: {"By using Tick & Tie, you agree to these terms. If you do not agree, do not use Tick & Tie."},
+    intro: "By using Tick & Tie, you agree to these terms. If you do not agree, do not use Tick & Tie.",
   sections: [
     { heading: "What Tick & Tie is", body: "A free independent project answering questions about 12 US companies' SEC filings. Not investment, financial, tax or legal advice. Figures are checked, but answers can be incomplete; check the original filing. No automated or bulk use, no getting around limits; access may be blocked. Provided as it is; may change, stop, or switch to saved answers. Public SEC filings; not connected with the SEC or the companies. No responsibility for losses, as far as the law allows. The laws of Ireland.", },
     { heading: "Not advice", body: "Not investment, financial, tax or legal advice." },
