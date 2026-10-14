@@ -51,4 +51,7 @@ export const messages = {
   checkedDetails: "How this answer was checked",
   seconds: (seconds: number) => `Answered in ${seconds.toFixed(1)} seconds.`,
   savedExplainer: "Live answers are paused, so this is a saved answer from the October 2026 evaluation.",
+  notFoundHeading: "Page not found",
+  notFoundBody: "There is nothing at this address.",
+  notFoundLink: "Go to the question page",
 };
